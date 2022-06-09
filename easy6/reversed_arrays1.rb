@@ -15,9 +15,9 @@ Algorithm:
 =end
 
 def reverse!(arr)
-  elements = []
-  elements << arr.pop until arr.empty?
-  arr << elements.shift until elements.empty?
+  new_arr = []
+  new_arr << arr.pop until arr.empty?
+  arr << new_arr.shift until new_arr.empty?
   arr
 end
 
