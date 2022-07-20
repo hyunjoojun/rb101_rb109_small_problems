@@ -20,7 +20,7 @@ Algorithm:
 def rotate_rightmost_digits(number, digit)
   digits_arr = number.digits.reverse
 
-  chosen_num = digits.delete_at(-digit)
+  chosen_num = digits_arr.delete_at(-digit)
   digits_arr << chosen_num
 
   digits_arr.join.to_i
