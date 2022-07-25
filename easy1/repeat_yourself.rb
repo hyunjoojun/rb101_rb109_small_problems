@@ -2,4 +2,4 @@ def repeat(string, number)
   number.times { puts string }
 end
 
-repeat('Hello', 3)
+p repeat('Hello', 3)
