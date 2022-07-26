@@ -1,10 +1,20 @@
-# example output = Teddy is 69 years old!
-# age = random number between 20 and 200
+=begin
+Output = String with Teddy's age
 
-puts "What is your name?"
-name = gets.chomp
-age = rand(20..200)
+Rules
+- Teddy's age is random number between 20 and 200.
 
-name = "Teddy" if name.empty?
+Algorithm:
+- Print Teddy's age by using string interpolation.
+=end
 
-puts "#{name} is #{age} years old!"
+def display_age
+  puts "What is your name?"
+  name = gets.chomp
+  name = "Teddy" if name.empty?
+
+  age = (20..200).to_a.sample
+  puts "#{name} is #{age} years old!"
+end
+
+display_age
