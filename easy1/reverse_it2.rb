@@ -1,13 +1,14 @@
 def reverse_words(words)
-  word = words.split
+  arr = []
 
   words.split.each do |word|
-    word.reverse! if word.length > 4
+    word.reverse! if word.length >= 5
+    arr << word
   end
 
-  word.join(' ')
+  arr.join(' ')
 end
 
-puts reverse_words('Professional')
-puts reverse_words('Walk around the block')
-puts reverse_words('Launch School')
+puts reverse_words('Professional')          # => lanoisseforP
+puts reverse_words('Walk around the block') # => Walk dnuora the kcolb
+puts reverse_words('Launch School')         # => hcnuaL loohcS
