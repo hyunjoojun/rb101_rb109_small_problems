@@ -1,8 +1,5 @@
 def sum(number)
-  sum = 0
-  str_digits = number.to_s.split('')
-  str_digits.each { |str_digit| sum += str_digit.to_i }
-  sum
+  number.digits.sum
 end
 
 puts sum(23) == 5
