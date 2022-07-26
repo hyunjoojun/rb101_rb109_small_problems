@@ -1,18 +1,19 @@
 vehicles = [
-  'car', 'CAR', 'truck', 'car', 'SUV', 'truck',
+  'car', 'car', 'truck', 'CAR', 'SUV', 'truck',
   'motorcycle', 'motorcycle', 'car', 'truck'
 ]
 
-def count_occurrences(array)
-  occurrences = Hash.new { |h, k| h[k] = 0 }
+def count_occurrences(words)
+  count_hash = Hash.new { |h, k| h[k] = 0 }
 
-  array.each do |element|
-    occurrences[element.downcase] += 1
+  words.each do |word|
+    count_hash[word.downcase] += 1
   end
 
-  occurrences.each do |element, count|
-    puts "#{element} => #{count}"
+  count_hash.each do |word, count|
+    puts "#{word} => #{count}"
   end
 end
 
-count_occurrences(vehicles)
+p count_occurrences(vehicles)
+p vehicles
