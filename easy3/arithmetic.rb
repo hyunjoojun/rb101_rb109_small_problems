@@ -1,22 +1,32 @@
 =begin
-input = number1 , number2
-optput = number1 + number2
-         number1 - number2
-         number1 * number2
-         number1 / number2
-         number1 % number2
-         number1 ** number2
+Input = Two positive integers
+Output = Prints result of operations.
+
+Rules:
+- Ask the user for two positive numbers.
+- Print out the result of operations of two input numbers.
+- Operations are: Addition, Subtraction, Product,
+  Quotient, Remainder, and Power.
+- Don't have to validate the input.
+
+Algorithm:
+- Set up two variables for user's input numbers.
+- Write the operations between two numbers and get the output.
 =end
+
+def prompt(message)
+  puts "==> #{message}"
+end
 
 nums = []
 operations = %w(+ - * / % **)
 
-puts "Enter the first number:"
-nums << gets.to_i
+prompt("Enter the first number:")
+nums << gets.chomp.to_f
 
-puts "Enter the second number:"
-nums << gets.to_i
+prompt("Enter the second number:")
+nums << gets.chomp.to_f
 
 operations.each do |op|
-  puts "#{nums[0]} #{op} #{nums[1]} = #{nums.inject(op)}"
+  prompt("#{nums[0]} #{op} #{nums[1]} = #{format("%.2f",nums.inject(op))}")
 end
