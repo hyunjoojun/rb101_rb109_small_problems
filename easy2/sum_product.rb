@@ -1,14 +1,19 @@
 =begin
-input = integer > 0
-        sum or product?
-output = sum of all numbers between 1 and the integer.
-         product of all numbers between 1 and the integer.
+Input = User's input number and user's choice of sum or product
+Output = Sum or product of numbers
 
-integer == 5
-sum == 15
+Rules
+- Ask the user to enter a positive integer.
+- Ask the user to choose one: sum or product.
+- If the user chose sum,
+output the sum of numbers between 1 and entered integer.
+- If the user chose product,
+output the product of numbers between 1 and entered integer.
 
-integer == 6
-product == 720
+Algorithm:
+- Set up a variable number and assign it to the user input.
+- If user enters 's', get the sum, if 'p' get the product.
+- Print out the message with the sum or product.
 =end
 
 def valid_number?(num)
@@ -37,13 +42,13 @@ end
 
 integer = ''
 loop do
-  puts "Please enter an integer greater than 0:"
+  puts 'Please enter an integer greater than 0:'
   integer = gets.chomp
   if valid_number?(integer)
     integer = integer.to_i
     break
   else
-    puts "Invalid number."
+    puts 'Invalid number.'
   end
 end
 
@@ -54,7 +59,7 @@ loop do
     if valid_letter?(letter)
       break
     else
-      puts "Unknown operation."
+      puts 'Unknown operation.'
     end
 end
 
