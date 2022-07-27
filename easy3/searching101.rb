@@ -1,24 +1,31 @@
 =begin
-input = 6 numbers from user
-output = message saying if 6th number appears among the 5 numbers.
+Input = 6 integers from user
+Output = Does the 6th number appears in the first 5 numbers?
 
-Set an empty array.
-put first 5 numbers in the array.
-check if the last number is in the array.
+Rules:
+- Ask user to enter 6 numbers.
+- Print a message that says whether or not
+  the last number appears in the first 5 numbers.
+
+Algorithm:
+- Set up 6 variables assign them to the user's input numbers.
+- Make an array of first 5 numbers.
+- Check if the last number exists in the array of 5 numbers.
+- Output the message.
 =end
 
-positions = %w(1st 2nd 3rd 4th 5th last)
+orders = %w(1st 2nd 3rd 4th 5th last)
 numbers = []
 
-positions.each do |nth|
-  puts "Enter the #{nth} number:"
+orders.each do |position|
+  puts "=> Enter the #{position} number:"
   numbers << gets.chomp.to_i
 end
 
-last_number = numbers.pop
+last_num = numbers.pop
 
-if numbers.include?(last_number)
-  puts "The number #{last_number} appears in #{numbers}."
+if numbers.include?(last_num)
+  puts "The number #{last_num} appears in #{numbers}."
 else
-  puts "The number #{last_number} does not appear in #{numbers}."
+  puts "The number #{last_num} does not appear in #{numbers}."
 end
