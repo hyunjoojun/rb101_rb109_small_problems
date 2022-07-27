@@ -1,35 +1,34 @@
 =begin
-Ask the user for input (length and width)
+Input = User's input for length and width of a room.
+Output = Area of the room in sq meters and sq feet.
 
-input = length of the room in meters
-        width of the room in meters
+Rules
+- Ask a user for length and width of a room in meters.
+- Display area of the room in sq meters and sq feet.
+- 1 square meter is 10.7639 square feet.
+- Don't have to validate the input.
 
-output = area of the room in square meters
-         area of the room in square feet
-
-1 square meter == 10.7639 square feet
-area in sq meter == length * width
-area in sq ft == area in sq meter * 10.7639
-
-Ex:
-length = 10
-width = 7
-area = 70.0 sq meters (753.47 sq ft)
+Algorithm:
+- Store user's input into two variables, length and width.
+- Area = length * width
+- Input is in meters.
+- Area in sq meters = length * width
+- Area in sq ft = Area in sq meters * 10.7639
 =end
 
-SQFT_TO_SQIN = 144
-SQFT_TO_SQCM = 929.03
+SQMETERS_TO_SQFEET = 10.7639
+SQFEET_TO_SQIN = 144
+SQFEET_TO_SQCM = 929.03
 
 puts "Enter the length of the room in feet:"
-length = gets.chomp.to_f
+length_feet = gets.chomp.to_f
 
 puts "Enter the width of the room in feet:"
-width = gets.chomp.to_f
+width_feet = gets.chomp.to_f
 
-area_sq_ft = (length * width).round(2)
-area_sq_in = (area_sq_ft * SQFT_TO_SQIN).round(2)
-area_sq_cm = (area_sq_ft * SQFT_TO_SQCM).round(2)
+area_sqft = (length_feet * width_feet).round(2)
+area_sqin = (area_sqft * SQFEET_TO_SQINCH).round(2)
+area_sqcm = (area_sqft * SQFEET_TO_SQCM).round(2)
 
-puts "The area of the room is #{area_sq_ft} square feet
-        (#{area_sq_in} square inches)
-        (#{area_sq_cm} square centimeters)"
+puts "The area of the room is #{area_sqft} square feet " + \
+"(#{area_sqin} square inches and #{area_sqcm} square centimeters)."
