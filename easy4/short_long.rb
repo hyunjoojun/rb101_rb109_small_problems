@@ -1,22 +1,24 @@
 =begin
-input: two strings
-output: one string of (shorter string + longer string + shorter string)
+Input = Two strings
+Output = One string
 
-rules: - Two strings have different lengths
-       - Method takes two arguments(strings)
-       - Return a string with no empty spaces
+Rules:
+- Compare two strings' length.
+- One is shorter than the other one.
+- Concatenate shorter string, longer string, and shorter string again.
+- Two strings will always have different lengths.
 
 Algorithm:
-- Compare two strings by their length.
-- Combine those strings in order.
-- Return one string.
+- Compare two strings' length.
+- Set two variables short and long, shorter string to short and longer string to long.
+- Add strings together short + long + short.
 =end
 
-def short_long_short(letters1, letters2)
-  if letters1.length > letters2.length
-    letters2 + letters1 + letters2
+def short_long_short(word1, word2)
+  if word1.length > word2.length
+    word2 + word1 + word2
   else
-    letters1 + letters2 + letters1
+    word1 + word2 + word1
   end
 end
 
