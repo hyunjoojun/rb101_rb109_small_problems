@@ -1,28 +1,32 @@
 =begin
-input: year (integer)
-output: century (string)
+Input = Year (Integer)
+Output = Century (String)
 
-rules: - Return century in string.
-       - Century is an integer and ends with st, nd, rd, or th
-       - New century begin in years end with 01
+Rules:
+- Return value is string that begins with the century number.
+- Return value ends with 'st', 'nd', 'rd', or 'th'.
+- New centuries begin in years that end with 01.
+- 1901 to 2000 is the 20th century.
 
 Algorithm:
-- Century = year / 100 + 1
-- When year / 100 has no remainder, century = year / 100
-- When the century ends with 1, we add 'st'
-- When the century ends with 2, we add 'nd'
-- When the century ends with 3, we add 'rd'
-- Exceptions: ends with 11, 12 or 13 we add 'th'
-- All other numbers we add 'th'
+- (year / 100) + 1 = century
+- if year % 100 == 0, year / 100 = century.
+- Add 'st' if century ends with 1.
+- Add 'nd' if century ends with 2.
+- Add 'rd' if century ends with 3.
+- Add 'th' if century ends with 11.
+- Add 'th' if century ends with 12.
+- Add 'th' if century ends with 13.
+- All others add 'th'.
 =end
 
 def century(year)
-  century = year / 100 + 1
+  century = (year / 100) + 1
   century -= 1 if year % 100 == 0
-  century.to_s + century_suffix(century)
+  century.to_s + ending(century)
 end
 
-def century_suffix(century)
+def ending(century)
   return 'th' if [11, 12, 13].include?(century % 100)
   last_digit = century % 10
 
