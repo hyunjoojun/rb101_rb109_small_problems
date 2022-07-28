@@ -1,11 +1,22 @@
 =begin
-input = a word or words
-output = number of characters in words. (Don't count spaces)
+Input = String of words
+Output = A message with number of characters
+
+Rules:
+- Ask the user for a word or words.
+- Count how many characters there are.
+- Do not count empty spaces.
+
+Algorithm:
+- Split the words.
+- Join them without spaces in between.
+- Return the length.
+- Print out a message with the length.
 =end
 
 puts "Please write word or multiple words:"
 words = gets.chomp
 
-number_of_characters = words.delete(' ').size
+char_length = words.split.join.length
 
-puts "There are #{number_of_characters} characters in \"#{words}\"."
+puts "There are #{char_length} characters in '#{words}'."
