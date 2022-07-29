@@ -1,33 +1,38 @@
 =begin
-input: integer (neg or pos)
-output: string (with sign and numbers)
+Input = An integer
+Output = A string
 
-rules:
-- use integer_to_string method
-- negative integer gets '-' in front
-- positive integer gets '+' in front
+Rules:
+- Convert an integer to a string.
+- Do not use Integer#to_s method nor String().
+- Input number can be negative.
+- If input number is negative, return string with '-'.
+- If input number is positive, return string with '+'.
+- If input number is 0, return '0'.
+- Use integer_to_string method from previous exercise.
 
 Algorithm:
-- if number < 0 add '-'
-- if number > 0 add '+'
-- if number == 0 return '0'
+- Write an array of digits in strings.
+- Split all the characters in input number to get digits.
+- Iterate through all the digits and convert it to string.
+- Combine the string.
+- If input number has - in front, return '-' and numbers.
+- If input number is positive, return '+' and numbers.
 =end
 
-# DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-
-# def integer_to_string(number)
-#   result = ''
-#   loop do
-#     number, remainder = number.divmod(10)
-#     result.prepend(DIGITS[remainder])
-#     break if number == 0
-#   end
-#   result
-# end
-
-def integer_to_string(integer)
-  integer.digits.join.reverse
+def integer_to_string(number)
+  number.digits.reverse.join
 end
+
+# def signed_integer_to_string(number)
+#   if number == 0
+#     '0'
+#   elsif number < 0
+#     '-' + integer_to_string(number * -1)
+#   else
+#     '+' + integer_to_string(number)
+#   end
+# end
 
 def signed_integer_to_string(number)
   return '0' if number == 0
