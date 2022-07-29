@@ -1,31 +1,30 @@
 =begin
-input: integer
-output: string
+Input = An integer
+Output = A string
 
-rules:
-- input is 0 or positive integer
-- do not use standard methods such as to_s, String(), format
+Rules:
+- Convert an integer to a string.
+- Do not use Integer#to_s method nor String().
+- Input number is 0 or positive integer.
 
 Algorithm:
-- Get all the digits in the integer(how?)
-- Create an array with all the integers
-- 'Join' the array to get the string
+- Write an array of digits in strings.
+- Split all the characters in input number to get digits.
+- Iterate through all the digits and convert it to string.
+- Combine the string.
 =end
 
-# def integer_to_string(integer)
-#   integer.digits.join.reverse
+# STRINGS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+# def integer_to_string(number)
+#   digits = number.digits.reverse
+
+#   chars = digits.map { |digit| STRINGS[digit] }
+#   chars.join
 # end
 
-DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-
 def integer_to_string(number)
-  result = ''
-  loop do
-    number, remainder = number.divmod(10)
-    result.prepend(DIGITS[remainder])
-    break if number == 0
-  end
-  result
+  number.digits.reverse.join
 end
 
 p integer_to_string(4321) == '4321'
