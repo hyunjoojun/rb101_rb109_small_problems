@@ -1,33 +1,38 @@
 =begin
-input: string of time of day in 24 hour format (hh:mm)
-output: integer in minutes (0..1439)
+Input: A string
+Output: An integer
 
-rules:
-- Do not use Date and Time classes
-- Disregard Daylight Savings and Standard Time and other complications
-- Write two methods (1)after_midnight and (2)before_midnight
+Rules:
+- Input string represents time of day in 24 hour format.
+- Write two methods after_midnight and before_midnight.
+- Methods return number of minutes in the range 0..1439.
+- Do not use Date and Time methods.
 
 Algorithm:
-- Split hours and minutes by ":"
-- Convert string to integer
-- For after_midnight : calculate hours and minutes to minutes
-- For before_midnight : minutes per day - after_midnight minutes
-- How do we make "24:00" to 0?
+- 1440 minutes is minutes per day.
+- For after_midnight:
+- Divide hours and minutes which is divided by ':'.
+- Convert hours in minutes and add minutes to get total minutes.
+- For before_midnight:
+- 1440 - after_midnight minutes = before_midnight minutes.
 =end
 
-HOURS_PER_DAY = 24
 MINUTES_PER_HOUR = 60
+HOURS_PER_DAY = 24
 MINUTES_PER_DAY = HOURS_PER_DAY * MINUTES_PER_HOUR
 
-def after_midnight(time_str)
-  hours, minutes = time_str.split(':').map(&:to_i)
-  (hours * MINUTES_PER_HOUR + minutes) % MINUTES_PER_DAY
+def after_midnight(time)
+  hour, min = time.split(':').map(&:to_i)
+  return 0 if hour == 0 || hour == HOURS_PER_DAY
+  hour_to_min = hour * MINUTES_PER_HOUR
+  hour_to_min + min
 end
 
-def before_midnight(time_str)
-  delta_minutes = MINUTES_PER_DAY - after_midnight(time_str)
-  delta_minutes = 0 if delta_minutes == MINUTES_PER_DAY
-  delta_minutes
+def before_midnight(time)
+  hour, min = time.split(':').map(&:to_i)
+
+  return 0 if hour == 0 || hour == HOURS_PER_DAY
+  MINUTES_PER_DAY - after_midnight(time)
 end
 
 p after_midnight('00:00') == 0
