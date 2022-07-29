@@ -1,26 +1,19 @@
 =begin
-input: any integers (neg, pos, or 0)
-output: string of time of day in 24 hour format (hh:mm)
+Input: An integer
+Output: A string
 
-rules:
-- If the number of minutes is pos, time is after midnight
-- If the number of minutes is neg, time is before midnight
-- Do not use Date and Time classes
-- Disregard Daylight Savings and Standard Time and other complications
+Rules:
+- Input integer represents number of minutes.
+- If the number is positive, the time is after midnight.
+- If the number is negative, the time is before midnight.
+- Return the time of day in 24 hour format (hh:mm).
+- Do not use Date or Time classes.
 
 Algorithm:
 - one day is 1440 minutes
 - (minutes % 1440).divmod(60) will give an array with hour and min
 - convert the array to string in 24 hour format
 =end
-
-# MIN_PER_DAY = 1440
-# MIN_PER_HOUR = 60
-
-# def time_of_day(minutes)
-#   hours, mins = (minutes % MIN_PER_DAY).divmod(MIN_PER_HOUR)
-#   format("%02d:%02d", hours, mins)
-# end
 
 MINUTES_PER_HOUR = 60
 HOURS_PER_DAY = 24
@@ -40,10 +33,10 @@ def time_of_day(delta_minutes)
   format('%02d:%02d', hours, minutes)
 end
 
-p time_of_day(0)
-p time_of_day(-3)
-p time_of_day(35)
-p time_of_day(-1437)
-p time_of_day(3000)
-p time_of_day(800)
-p time_of_day(-4231)
+p time_of_day(0) == "00:00"
+p time_of_day(-3) == "23:57"
+p time_of_day(35) == "00:35"
+p time_of_day(-1437) == "00:03"
+p time_of_day(3000) == "02:00"
+p time_of_day(800) == "13:20"
+p time_of_day(-4231) == "01:29"
