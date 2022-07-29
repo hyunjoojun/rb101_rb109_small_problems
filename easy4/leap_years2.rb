@@ -1,31 +1,30 @@
 =begin
-input: year greater than 0
-output: boolean
+Input = An integer, year
+Output = Boolean
 
-rules:
-- Return true if input year is leap year, else false.
-- Leap year true (After 1752):
-  if evenly divisible by 4, but not by 100
-  if evenly divisible by 4, 100 and also 400
-- Leap year true (Before 1752):
-  year evenly divisible by 4
+Rules:
+- Leap year after 1752:
+- Year that is evenly divisible by 4 but not divisible by 100.
+- Year that is evenly divisible by 100 and also divisible by 400.
+- Input year is always greater than 0.
+- Leap year before 1752:
+- Any year that is evenly divisible by 4.
+- Return true if the year is leap year, false otherwise.
 
 Algorithm:
-- Leap year after 1752 true if year % 400 == 0
-- Leap year after 1752 true if year % 4 == 0 && year % 100 != 0
-- Leap year before 1752 true only if year % 4 == 0
-- All others return false
+- For the years after 1752 (including 1752):
+- Year % 4 == 0 has to be true, but not for year % 100.
+- If year % 100 == 0 is true, year % 400 == 0 has to be true.
+- In these 2 cases, return true else return false.
+- For the years before 1752:
+- Return true if year % 4 == 0, else false.
 =end
 
 def leap_year?(year)
-  if year < 1752 && year % 4 == 0
-    true
-  elsif year % 400 == 0
-    true
-  elsif year % 4 == 0 && year % 100 != 0
-    true
+  if year < 1752
+    year % 4 == 0
   else
-    false
+    (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)
   end
 end
 
