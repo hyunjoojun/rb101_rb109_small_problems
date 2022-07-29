@@ -1,19 +1,19 @@
 =begin
-input: numbers in a string
-output: integer
+Input = A string
+Output = An integer
 
-rules:
-- Convert numbers in a string to integers
-- All strings will be numeric.
-- Don't use to_i or Integer() methods.
+Rules:
+- Convert numbers in string to the integer.
+- Do not use String#to_i method nor Integer().
+- Do not worry about invalid characters.
+- All characters will be numbers.
+- Do not worry about + or -.
 
 Algorithm:
-- Create a hash that has key of string numbers and value of integers.
-- Split input string into array.
-- Iterate through each numbers and convert to digits using the hash.
-- Get a new array of integers.
-- Iterate through each numbers to get the final integer.
-    - how??
+- Write a hash that converts string to number.
+- Split all the characters in input string.
+- Iterate through all the characters and convert it to integer.
+- Combine the integers.
 =end
 
 DIGITS = {
