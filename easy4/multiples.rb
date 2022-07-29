@@ -1,30 +1,23 @@
 =begin
-input: integer greater than 1
-output: sum of 3 and 5 multiples (integer)
+Input = An integer
+Output = An integer
 
-rules:
+Rules:
+- Input number will always be positive.
 - Find all multiples of 3 or 5 between 1 and input number.
-- Number has to evenly divide by 3 or 5
-- Input number is greater and 1
+- Add all the multiples to get the sum.
 
 Algorithm:
-- Set an empty array for multiples.
-- Iterate through all the numbers and check if it's multiples.
-- Numbers that have no remainder when divided by 3 or 5 are multiples.
-- If it's multiples push numbers into the array.
-- Sum all the numbers in the array.
+- Iterate through numbers from 1 to input number.
+- Select if the number is evenly divisible by 3 or 5.
+- Add all the numbers in the returned array.
+- Return the sum.
 =end
 
-def multisum(number)
-  multiples = []
-
-  (1..number).each do |num|
-    if num % 3 == 0 || num % 5 == 0
-      multiples << num
-    end
-  end
-
-  multiples.inject(:+)
+def multisum(num)
+  (1..num).select do |int|
+    int % 3 == 0 || int % 5 == 0
+  end.inject(:+)
 end
 
 p multisum(3) == 3
