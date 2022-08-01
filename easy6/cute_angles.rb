@@ -1,16 +1,15 @@
 =begin
-input: floating point number between 0 and 360
-output: string that represents angle in degrees, minutes, and seconds.
+Input: An angle
+Output: Degree, minutes, and seconds
 
-rules:
-- Use a degree symbol to represent degrees.
-- Use a single quote to represent minutes.
-- Use a double quote to represent seconds.
-- A degree has 60 minutes.
-- A minute has 60 seconds.
-- Use two digit numbers with leading zeros for minutes and seconds.
+Rules:
+- Input number represents an angle between 0 and 360.
+- Divide the number into degree, minutes, and seconds.
+- A degree has 60 minutes, and a minute has 60 seconds.
+- Use two digit numbers with leading zeros.
 
 Algorithm:
+- Set up constants.
 - Convert degrees to seconds.
 - Divide seconds by seconds per degree to get degrees.
 - Divide remainder by seconds per minute to get minutes.
@@ -23,12 +22,14 @@ MINUTES_PER_DEGREE = 60
 SECONDS_PER_MINUTE = 60
 SECONDS_PER_DEGREE = MINUTES_PER_DEGREE * SECONDS_PER_MINUTE
 
-def degrees_0_to_360(degrees)
-  degrees % 360
+def normalize_degree(degree)
+  degree % 360 if degree != (0..360)
 end
 
 def dms(degrees_float)
-  total_seconds = (degrees_0_to_360(degrees_float) * SECONDS_PER_DEGREE).round
+  degrees_float = normalize_degree(degrees_float)
+
+  total_seconds = (degrees_float * SECONDS_PER_DEGREE).round
   degrees, remaining_seconds = total_seconds.divmod(SECONDS_PER_DEGREE)
   minutes, seconds = remaining_seconds.divmod(SECONDS_PER_MINUTE)
   format(%(#{degrees}#{DEGREE}%02d'%02d"), minutes, seconds)
