@@ -1,28 +1,32 @@
 =begin
-input: string of words or a word
-output: string of words (the first and last letters of every word are swapped)
+Input: A string
+Output: A string
 
-rules:
-- Assume that every word contains at least one letter.
-- The string will always contain at least one word.
-- The string will only contain words and spaces.
+Rules:
+- A string of words are given separated by spaces.
+- Switch the first letter and last letter of all the words.
+- Every word contains at least one letter or at least one word.
+- Input string will always contain words and spaces, nothing else.
 
 Algorithm:
-- Split the words.
-- Iterate through each word and take the first letter and the last letter.
-- Replace the first letter with the last letter.
-- Replace the last letter with the first letter.
-- Combine the words into a string and return it.
+- Split the words by spaces which will give an array of words.
+- Take the array of words, iterate through words and switch the letters.
+- Take the transformed array and join the words.
+- Return the transformed words.
 =end
 
-def swap(words)
-  new_word = words.split.map do |word|
-    word[0], word[-1] = word[-1], word[0]
-    word
-  end
-  new_word.join(' ')
+def swap_first_last_letters(word)
+  word[0], word[-1] = word[-1], word[0]
+  word
 end
 
-p swap('Oh what a wonderful day it is')
-p swap('Abcde')
-p swap('a')
+def swap(words)
+  new_words = words.split.map do |word|
+    swap_first_last_letters(word)
+  end
+  new_words.join(' ')
+end
+
+p swap('Oh what a wonderful day it is') == 'hO thaw a londerfuw yad ti si'
+p swap('Abcde') == 'ebcdA'
+p swap('a') == 'a'
