@@ -1,52 +1,42 @@
 =begin
-input: array of integers between 0 and 19
-output: sorted array based on the English words
+Input: An array
+Output: An array
 
-rules:
-- The final returned array should be in integers.
-- The array is sorted based on the English words.
+Rules:
+- The input array contains numbers between 0 and 19.
+- Sort the numbers by the english words for each number.
+- Return an array of integers in the order above.
 
 Algorithm:
-- Set a hash that has integers and English words.
-- Set an empty array which will be the sorted array.
-- Iterate through each integers in the array and convert them to words using the hash.
-- Sort the words by alphabetical order.
-- Convert the words back to integers.
-- Those integers are pushed to the empty array.
-- Return the final sorted array.
+- Write an array that has numbers in words.
+- Convert all the numbers into words using the array.
+- Create an array of words and sort them.
+- Convert those words into the numbers.
+- Return the array of numbers.
 =end
 
-# NUMBERS = {
-#   0 => 'zero', 1 => 'one', 2 => 'two', 3 => 'three', 4 => 'four', 5 => 'five', 6 => 'six',
-#   7 => 'seven', 8 => 'eight', 9 => 'nine', 10 => 'ten', 11 => 'eleven', 12 => 'twelve',
-#   13 => 'thirteen', 14 => 'fourteen', 15 => 'fifteen', 16 => 'sixteen', 17 => 'seventeen',
-#   18 => 'eighteen', 19 => 'nineteen'
-# }
+NUMBER_WORDS = %w(zero one two three four
+  five six seven eight nine
+  ten eleven twelve thirteen fourteen
+  fifteen sixteen seventeen eighteen nineteen)
 
 # def alphabetic_number_sort(numbers)
-#   numbers_in_words = []
-#   sorted_numbers = []
-
-#   numbers.each do |num|
-#     numbers_in_words << NUMBERS[num]
-#   end
-
-#   sorted_words = numbers_in_words.sort
-#   sorted_words.each do |word|
-#     NUMBERS.each do |key, _|
-#       if word == NUMBERS[key]
-#         sorted_numbers << key
-#       end
-#     end
-#   end
-#   sorted_numbers
+#   numbers.sort_by { |number| NUMBER_WORDS[number] }
 # end
 
-NUMBER_WORDS = %w(zero one two three four five six seven eight nine
-  ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen)
-
 def alphabetic_number_sort(numbers)
-  numbers.sort { |num1, num2| NUMBER_WORDS[num1] <=> NUMBER_WORDS[num2] }
+  words = numbers.map do |number|
+    NUMBER_WORDS[number]
+  end
+
+  sorted_arr = words.sort
+
+  sorted_arr.map do |word|
+    NUMBER_WORDS.index(word)
+  end
 end
 
-p alphabetic_number_sort((0..19).to_a)
+p alphabetic_number_sort((0..19).to_a) == [
+  8, 18, 11, 15, 5, 4, 14, 9, 19, 1, 7, 17,
+  6, 16, 10, 13, 3, 12, 2, 0
+]
