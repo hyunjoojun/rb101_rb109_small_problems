@@ -1,32 +1,29 @@
 =begin
-input: string
-output: string without any consecutive duplicate characters
+Input: A string
+Output: A string
 
-rules:
+Rules:
+- Delete any consecutive duplicate characters.
 - Do not use squeeze method.
-- Any consecutive duplicate characters are collapsed into a single character.
-- Empty string will return empty string.
-- If there is no duplicate characters, return single character.
+- Return empty string if input is empty.
 
 Algorithm:
-- Set an empty final string.
-- Split all the letters in the string.
-- Iterate through each letters.
-- If the letter in final string is not equal to current letter,
-  push it into the final string.
-- Return the final string.
+- Split all the characters.
+- Iterate through each characters and compare to the previous character.
+- Set up a empty string.
+- Push the character into the empty string.
+- Skip if there are any duplicates.
+- Return the new string.
 =end
 
-def crunch(text)
-  clean_text = ''
+def crunch(words)
+  crunch_words = ''
 
-  text.chars.each do |char|
-    if clean_text[-1] != char
-      clean_text << char
-    end
+  words.chars do |char|
+    crunch_words << char if crunch_words[-1] != char
   end
 
-  clean_text
+  crunch_words
 end
 
 p crunch('ddaaiillyy ddoouubbllee') == 'daily double'
