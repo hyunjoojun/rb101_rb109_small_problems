@@ -1,20 +1,13 @@
 =begin
-input: string of words
-output: hash that shows the number of words of different sizes
+Input: A string
+Output: A hash
 
-rules:
-- Words are separated by a space.
-- Non-alphabetic characters are NOT counted.
-- If the string is empty, return a empty hash.
+Rules:
+- Modify the word_sizes method from previous exercise.
+- Non-alphabetic characters are not counted.
 
 Algorithm:
-- Set an empty hash.
-- Split the words in the string.
-- Delete any non-alphabetic characters.
-- Iterate through the words and set the word's length equal to the hash's key.
-- At the same time, set the value to 1.
-- If the same key exists, add 1 to the existing value.
-- Return the hash.
+- Delete the characters that are not letters.
 =end
 
 def word_sizes(words)
