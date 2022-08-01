@@ -1,32 +1,20 @@
 =begin
-input: string of words and assortment of non-alphabetic characters
-output: string with all non-alphabetic characters replaced by spaces
+Input: A string
+Output: A string
 
-rules:
-- Any non-alphabetic characters should be replaced by a space.
-- One or more alphabetic characters equals to one space.
-- Assume the string is all lowercased.
+Rules:
+- A string of words are given including non-alphabetic characters.
+- Remove non-alphabetic characters and replace it with a space.
+- Replace with one space for multiple non-alphabetic characters in a row.
+- No consecutive spaces.
 
 Algorithm:
-- Split all the characters.
-- Iterate through each characters to check if it is an alphabet or not.
-- If it is non-alphabetic character, replace it with space.
+- Substitute non-alphabetic characters with a space.
+- Delete repeated spaces.
 =end
 
-ALPHABET = ('a'..'z').to_a
-
-def cleanup(text)
-  clean_chars = []
-
-  text.chars.each do |char|
-    if ALPHABET.include?(char)
-      clean_chars << char
-    else
-      clean_chars << ' '
-    end
-  end
-
-  clean_chars.join.squeeze(' ')
+def cleanup(words)
+  words.gsub(/[^a-z]/, ' ').squeeze(' ')
 end
 
-p cleanup("---what's my +*& line?")
+p cleanup("---what's my +*& line?") == ' what s my line '
