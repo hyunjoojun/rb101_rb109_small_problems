@@ -5,9 +5,9 @@ def spin_me(str)
 end
 
 str = 'hello world'
-p spin_me(str)
-p str
-puts str.object_id
-puts spin_me(str).object_id
+puts str.object_id # 47435609148580
+puts spin_me(str).object_id # 47435609148360
 
-# It will return a different object since the string was passed to split method.
+# Once we call split method on str, we create different object, an array.
+# As a result, we are creating a new string which has different object id.
+# The each method and reverse! method will mutate the string object.
