@@ -1,18 +1,18 @@
 =begin
-input: string of words
-output: hash that shows the number of words of different sizes
+Input: A string
+Output: A hash
 
-rules:
+Rules:
 - Words are separated by a space.
 - Non-alphabetic characters are counted.
 - If the string is empty, return a empty hash.
+- Return a hash with keys that are length of words and values that are count.
 
 Algorithm:
-- Set an empty hash.
+- Set an empty hash that has initial value of 0.
 - Split the words in the string.
-- Iterate through the words and set the word's length equal to the hash's key.
-- At the same time, set the value to 1.
-- If the same key exists, add 1 to the existing value.
+- Iterate through the words and set the word's length equal to the key.
+- Add 1 to the value.
 - Return the hash.
 =end
 
