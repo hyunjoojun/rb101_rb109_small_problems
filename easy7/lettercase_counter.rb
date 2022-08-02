@@ -1,42 +1,37 @@
 =begin
-input: string
-output: hash
+Input: A string
+Output: A hash
 
-rules:
-- Count lowercase letters.
-- Count uppercase letters.
-- Count characters that's neither lowercase or uppercase letters.
-- Return them into a hash.
-- Keys : lowercase, uppercase, neither
-- Values : number of lowercase, number of uppercase, number of characters that are neither.
+Rules:
+- Take a string and output a hash.
+- The hash contains keys of lowercase, uppercase, and neither.
+- The hash contains values of how many characters there are for all 3 keys.
+- If the string is empty, return all keys with 0 values.
 
 Algorithm:
-- Set an empty hash.
-- Set a constant of lowercase letters as an array.
-- Set a constant of uppercase letters as an array.
-- Split all characters in the string.
-- Iterate through all characters to check which category they fit in.
-- Add one to appropriate category after iteration.
-- Return hash.
+- Set up a hash with all 3 keys and values of 0.
+- Split the characters and iterate through them.
+- Check if it's lowercase, uppercase, or neither.
+- Increment the count accordingly.
+- Return the hash.
 =end
 
 LOWERCASE = ('a'..'z').to_a
 UPPERCASE = ('A'..'Z').to_a
 
 def letter_case_count(string)
-  counter = { lowercase: 0, uppercase: 0, neither: 0 }
+  count_hash = { lowercase: 0, uppercase: 0, neither: 0 }
 
-  string.chars.each do |char|
+  string.chars do |char|
     if LOWERCASE.include?(char)
-      counter[:lowercase] += 1
+      count_hash[:lowercase] += 1
     elsif UPPERCASE.include?(char)
-      counter[:uppercase] += 1
+      count_hash[:uppercase] += 1
     else
-      counter[:neither] += 1
+      count_hash[:neither] += 1
     end
   end
-
-  counter
+  count_hash
 end
 
 p letter_case_count('abCdef 123') == { lowercase: 5, uppercase: 1, neither: 4 }
