@@ -1,30 +1,26 @@
 =begin
-input: positive integer
-output: display a right triangle with sides of n stars.
+Input: An integer
+Output: Print right triangle
 
-rules:
-- The triangle is drawn with stars(*).
-- The right angle is on the lower-right side of the triangle.
-- The sides have n stars determine by the input number.
+Rules:
+- Input integer is a positive integer, n.
+- Display a right triangle whose side each have n stars.
+- The right angle is on the lower right corner.
 
 Algorithm:
-- The first line starts with n - 1 blank spaces and one star at the end.
-- The second line has n - 2 blank spaces and 2 stars at the end.
-- The third line has n - 3 blank spaces and 3 stars at the end.
-- Number of lines equals to the input number.
-- The last line has n stars with no spaces.
+- First line: number - 1 epmty spaces and 1 star.
+- Second line: number - 2 empty spaces and 2 stars.
+- Third line: number - 3 empty spaces and 3 stars.
+- Fourth line: number - 4 empty spaces and 4 stars.
+- Until last line which has number of stars.
 =end
 
 def triangle(length)
-  stars = 1
+  length += 1
 
-  loop do
-    puts " " * (length - stars) + "*" * stars
-
-    stars += 1
-    break if stars > length
+  length.times do |num|
+    puts "#{' ' * (length - num)}#{'*' * num}"
   end
-
 end
 
 triangle(5)
