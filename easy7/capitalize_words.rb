@@ -1,33 +1,27 @@
-require 'pry'
-
 =begin
-input: string
-output: a string with all words capitalized
+Input: A string
+Output: A string
 
-rules:
-- The first character of every word is capitalized.
-- All other letters are lowercase.
-- The string contains non-blank characters.
-- The words are any sequence.
+Rules:
+- The input string contains multiple words.
+- Capitalize all the words in the input string.
+- The first character of every word is capitalized and other letters are lowercase.
+- Words are non-blank characters and in any order.
 
 Algorithm:
-- Split the words.
-- Iterate through each words and capitalize them.
-- Return the string.
+- Split the words into an array.
+- Iterate through the array and capitalize all the words.
+- Return the new string.
 =end
 
-# def word_cap(words)
-#   capitalized_words = words.split.map do |word|
-#     word.capitalize
-#   end
-#   capitalized_words.join(' ')
+# def word_cap(string)
+#   string.split.map(&:capitalize).join(' ')
 # end
 
-# def word_cap(words)
-#   new_words = words.split.map do |word|
+# def word_cap(string)
+#   string.split.map! do |word|
 #     word[0].upcase + word[1..].downcase
-#   end
-#   new_words.join(' ')
+#   end.join(' ')
 # end
 
 def word_cap(words)
