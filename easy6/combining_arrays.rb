@@ -1,36 +1,29 @@
 =begin
-input: two arrays
-output: one array containing all values from the two arrays
+Input: Two arrays
+Output: An array
 
-rules:
-- Take all elements from two arrays and combine them into one array.
-- No duplicate elements.
+Rules:
+- Combine two input arrays into one array.
+- There should be no repeated elements.
 
 Algorithm:
-- Set an empty array.
-- Add the two arrays together.
-- Iterate through every elements.
-- Push elements into the empty array.
-- If there is any duplicate, don't push that element.
-- Return new array.
+- Use concat to combine the arrays.
+- Use uniq to get rid of any repeats.
 =end
 
-# def merge(array_1, array_2)
-#   array_1 | array_2
-# end
+def merge1(arr1, arr2)
+  arr1.concat(arr2).uniq
+end
 
-# def merge(arr1, arr2)
-#   (arr1 + arr2).uniq
-# end
+def merge2(array_1, array_2)
+  array_1 | array_2
+end
 
 def merge(arr1, arr2)
-  merged_array = []
+  new_arr = []
 
-  added_arr = arr1 + arr2
-  added_arr.each do |ele|
-    merged_array << ele unless merged_array.include?(ele)
-  end
-  merged_array
+  new_arr << arr1 << arr2
+  new_arr.flatten.uniq
 end
 
 p merge([1, 3, 5], [3, 6, 9]) == [1, 3, 5, 6, 9]
