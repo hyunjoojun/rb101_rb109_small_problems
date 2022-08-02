@@ -1,20 +1,26 @@
 =begin
-input: array
-output: reversed elements array
+Input: An array
+Output: An array
 
-rules:
-- Method does not mutate the original array.
-- May not use reverse or reverse! method.
-- If there is one element, return the same array.
+Rules:
+- Reverse the elements of the input array.
+- Do not mutate the input array, return a new array.
+- Do not use reverse method.
+- Do not use the method from previous exercise.
 
 Algorithm:
-- Iterate through each element
-- Unshift each element in an empty array.
-- Return new array.
+- Iterate through input array using each_with_object.
+- Return a new array using prepend.
 =end
 
-def reverse(arr)
-  arr.each_with_object([]) { |ele, new_arr| new_arr.unshift(ele) }
+# def reverse(arr)
+#   arr.each_with_object([]) do |ele, new_arr|
+#     new_arr.prepend(ele)
+#   end
+# end
+
+def reverse(array)
+  array.inject([], :prepend)
 end
 
 p reverse([1,2,3,4]) == [4,3,2,1]          # => true
