@@ -1,35 +1,34 @@
 =begin
-input: array
-output: an element that occurs twice in the array
+Input: An array
+Output: An element
 
-rules:
-- The array is unordered array.
-- Only one value occurs twice.
-- Return the value that occurs twice.
+Rules:
+- One element of the array occurs twice.
+- Return the element that occurs twice.
 
 Algorithm:
-- Set an empty array.
-- Iterate through each elements.
-- Push elements into the empty array.
-- If the element exists in the empty array already, retrun that value.
+- Iterate through the array, check if its count is equal to 2.
+- Return the element if count is equal to 2.
 =end
 
-# def find_dup(arr)
-#   arr.find { |ele| arr.count(ele) == 2 }
-# end
-
 def find_dup(arr)
-  elements = []
-
-  loop do
-    elements = arr.shift
-    break if arr.include?(elements)
+  arr.each do |ele|
+    return ele if arr.count(ele) == 2
   end
-
-  elements
 end
 
-p find_dup([1, 5, 3, 1])
+# def find_dup(arr)
+#   elements = []
+
+#   loop do
+#     elements = arr.shift
+#     break if arr.include?(elements)
+#   end
+
+#   elements
+# end
+
+p find_dup([1, 5, 3, 1]) == 1
 p find_dup([18,  9, 36, 96, 31, 19, 54, 75, 42, 15,
           38, 25, 97, 92, 46, 69, 91, 59, 53, 27,
           14, 61, 90, 81,  8, 63, 95, 99, 30, 65,
@@ -39,4 +38,4 @@ p find_dup([18,  9, 36, 96, 31, 19, 54, 75, 42, 15,
           55, 79, 80, 21, 39, 72, 13, 50,  6, 70,
           85, 87, 51, 17, 66, 20, 28, 26,  2, 22,
           40, 23, 71, 62, 73, 32, 43, 24,  4, 56,
-          7,  34, 57, 74, 45, 11, 88, 67,  5, 58])
+          7,  34, 57, 74, 45, 11, 88, 67,  5, 58]) == 73
