@@ -1,41 +1,23 @@
 =begin
-input: array
-output: two arrays(pair of nested arrays)
+Input: An array
+Output: Nested arrays
 
-rules:
-- If array has even number of elements, divide by half.
-- If the array has odd number of elements, the middle element placed in first half.
-- Return pair of nested arrays.
-- If there is only one element, it's placed in first half, second half is empty array.
-- If it's empty array , return two empty arrays.
+Rules:
+- Divide the array in half and create a pair of nested arrays.
+- If the original array contains an odd number of elements,
+the middle element should be placed in the first half array.
+- If the input is an empty array, return two empty nested arrays.
 
 Algorithm:
-- if length of the array is even, divide by half (divisor).
-- if length is odd, divide by half and add one (divisor).
-- Set first half equal to first half array.
-- Set rest of them into second half array.
-- push two arrays into the empty array.
-- Return the final array.
+- Divide the elements by its index.
+- Get the middle index: (array.length / 2.0).ceil
+- Use partition method with index.
 =end
 
-# def halvsies(array)
-#   middle = (array.size / 2.0).ceil
-#   first_half = array.slice(0, middle)
-#   second_half = array.slice(middle, array.size - middle)
-#   [first_half, second_half]
-# end
-
 def halvsies(arr)
-  if arr.length.even?
-    divisor = arr.length / 2
-    first_half = arr.first(divisor)
-    second_half = arr.last(divisor)
-  elsif arr.length.odd?
-    divisor = arr.length / 2 + 1
-    first_half = arr.first(divisor)
-    second_half = arr.last(divisor - 1)
+  arr.partition.with_index do |_, idx|
+    idx < (arr.length / 2.0).ceil
   end
-  [first_half, second_half]
 end
 
 p halvsies([1, 2, 3, 4]) == [[1, 2], [3, 4]]
