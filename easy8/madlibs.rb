@@ -1,34 +1,14 @@
 =begin
-input: input words from user
-output: A sentence (string)
 
-rules:
-- Get input from user: noun, verb, adjective, and adverb.
-- Make a sentence out of inputs.
-- Do you 'verb' your 'noun' 'adjective' 'adverb'? That's hilarious!
+Rules:
+- Create a story template with blanks for words.
+- Get input from a user for words.
+- Prompt a noun, a verb, an adverb, and an adjective.
 
 Algorithm:
-- Store user's input by asking.
-- Print out a sentence with those inputs.
+- Ask the user to input words.
+- Store the words and output a short story.
 =end
-
-# print 'Enter a noun: '
-# noun = gets.chomp
-
-# print 'Enter a verb: '
-# verb = gets.chomp
-
-# print 'Enter an adjective: '
-# adjective = gets.chomp
-
-# print 'Enter an adverb: '
-# adverb = gets.chomp
-
-# sentence_1 = "Do you #{verb} your #{adjective} #{noun} #{adverb}? That's hilarious!"
-# sentence_2 = "The #{adjective} #{noun} #{verb}s #{adverb} over the lazy dog."
-# sentence_3 = "The #{noun} #{adverb} #{verb}s up #{adjective} Joe's turtle."
-
-# puts [sentence_1, sentence_2, sentence_3].sample
 
 types = %w(noun verb adjective adverb)
 words = {}
