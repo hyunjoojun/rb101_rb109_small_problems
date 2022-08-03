@@ -1,42 +1,47 @@
 =begin
-input: string
-output: next to last word
+Input: A string of words
+Output: A string of one word
 
-rules:
-- Input string contains words.
-- Return the next to last word in the string.
-- Words are any sequence.
-- They don't contain blanks.
-- Input will always contain at least two words.
+Rules:
+- The input string contains words.
+- Return the next to last word.
+- Words are any sequence of non-blank characters.
+- Input string will always contain at least two words.
 
 Algorithm:
-- Separate the string into words.
-- Need to select the next to last word.
-- Return the word.
+- Split the sentence into words.
+- Return the next to last word.
 =end
 
-# def penultimate(words)
-#   arr = words.split
-#   arr[-2]
-# end
-
-# p penultimate('last word') == 'last'
-# p penultimate('Launch School is great!') == 'is'
-
-def middle_word(words)
-  arr = words.split
-  return words if arr.empty? || arr.length < 2
-
-  if arr.length.odd?
-    middle = arr.length / 2
-    arr[middle]
-  elsif arr.length.even?
-    middle = arr.length / 2
-    arr[middle - 1] + " " + arr[middle]
+def penultimate(sentence)
+  if sentence.split.length <= 1
+    sentence
+  else
+    sentence.split[-2]
   end
 end
 
-p middle_word("Hi")
-p middle_word(" ")
-p middle_word("Hi my name is Hyunjoo.")
-p middle_word("Launch School is great!")
+def middle_word(words)
+  length = words.split.length
+  middle = length / 2
+
+  if length > 2 && length.odd?
+    words.split[middle]
+  elsif length.even?
+    ''
+  else
+    words
+  end
+end
+
+p penultimate('last word') == 'last'
+p penultimate('Launch School is great!') == 'is'
+p penultimate('hello') == 'hello'
+p penultimate('') == ''
+
+p middle_word('last word') == ''
+p middle_word('hello my name') == 'my'
+p middle_word('') == ''
+p middle_word('hi') == 'hi'
+p middle_word('hello my name is Jane!') == 'name'
+p middle_word('hi, how are you?') == ''
