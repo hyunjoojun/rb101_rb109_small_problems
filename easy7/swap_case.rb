@@ -1,39 +1,51 @@
 =begin
-input: string
-output: new string with swap case
+Input: A string
+Output: A string
 
-rules:
-- All uppercase letters are replaced by lowercase letters.
-- All lowercase letters are replaced by uppercase letters.
+Rules:
+- Every uppercase letter is replaced by its lowercase version.
+- Every lowercase letter is replaced by its uppercase version.
+- All others remain the same.
 - Do not use swapcase method.
-- All other characters that are not letters stays the same.
 
 Algorithm:
-- Set a uppercase letters array.
-- Set a lowercase letters array.
-- Split all characters.
-- Iterate through each characters.
-- If the character is uppercase, downcase the letter.
-- If the character is downcase, upcase the letter.
-- All others remains the same.
+- Split into characters.
+- Iterate through all characters and check if it's lowercase, uppercase, or neither.
+- If it's lowercase switch it to uppercase.
+- If it's uppercase, switch it to lowercase.
+- If it's neither, return the same character.
 - Return new string.
 =end
 
-UPPERCASE = ("A".."Z").to_a
-LOWERCASE = ("a".."z").to_a
+UPPERCASE = ('A'..'Z').to_a
+LOWERCASE = ('a'..'z').to_a
 
-def swapcase(words)
-  swapped_letters = words.chars.map do |char|
+def swapcase(string)
+  new_string = ''
+  string.chars do |char|
     if UPPERCASE.include?(char)
-      char.downcase
+      new_string << char.downcase
     elsif LOWERCASE.include?(char)
-      char.upcase
+      new_string << char.upcase
     else
-      char
+      new_string << char
     end
   end
-  swapped_letters.join
+  new_string
 end
+
+# def swapcase(string)
+#   characters = string.chars.map do |char|
+#     if char =~ /[a-z]/
+#       char.upcase
+#     elsif char =~ /[A-Z]/
+#       char.downcase
+#     else
+#       char
+#     end
+#   end
+#   characters.join
+# end
 
 p swapcase('CamelCase') == 'cAMELcASE'
 p swapcase('Tonight on XYZ-TV') == 'tONIGHT ON xyz-tv'
