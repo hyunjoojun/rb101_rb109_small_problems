@@ -1,31 +1,31 @@
 =begin
-input: Two arrays of numbers
-output: One array of products
+Input: Two arrays
+Output: One array
 
-rules:
-- Input array has numbers.
-- Get all the pair of numbers that can be formed between two arrays.
-- Get the product of pairs.
-- Put numbers into the array.
-- Sort the array by increasing value.
+Rules:
+- Two arrays contains list of numbers.
+- The new array contains the product of every pair of numbers
+that can be formed between the elements of the two arrays.
+- The new array should be sorted by increasing value.
+- Both arrays contains at least one number.
 
 Algorithm:
-- Set an empty array.
-- Iterate through both arrays.
-- multiply each numbers.
-- push the numbers into the empty array.
-- sort the numbers in order.
+- Get all pairs between the elements of the two arrays.
+- Multiply them and make new array.
 =end
 
-def multiply_all_pairs(arr1, arr2)
-  products = []
+# def multiply_all_pairs(arr1, arr2)
+#   products = []
+#   arr1.each do |item_1|
+#     arr2.each do |item_2|
+#       products << item_1 * item_2
+#     end
+#   end
+#   products.sort
+# end
 
-  arr1.each do |num1|
-    arr2.each do |num2|
-      products << num1 * num2
-    end
-  end
-  products.sort
+def multiply_all_pairs(array_1, array_2)
+  array_1.product(array_2).map { |num1, num2| num1 * num2 }.sort
 end
 
-p multiply_all_pairs([2, 4], [4, 3, 1, 2])
+p multiply_all_pairs([2, 4], [4, 3, 1, 2]) == [2, 4, 4, 6, 8, 8, 12, 16]
