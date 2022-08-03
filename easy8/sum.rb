@@ -1,30 +1,28 @@
 =begin
-input: array of numbers
-output: integer (sum)
+Input: An array
+Output: An integer
 
-rules:
-- Input array always contains at least one number.
-- The method should return the sum of sums.
-- The sum of sums of each leading subsequence for the input array.
+Rules:
+- Input array contains integers.
+- Return the sum of the sums of each leading subsequence for that array.
+- The input array always contains at least one number.
 
 Algorithm:
-- Add all numbers to get the sum.
-- Get rid of last number in the array and add all numbers.
-- Repeat the process until array is empty.
-- Add up the sum to get the total.
+- Set up an empty array.
+- Push in the first number, then first and second number,
+then first, second, and third and so on.
+- Add up the numbers.
 =end
 
 def sum_of_sums(numbers)
-  sum = 0
-  loop do
-    sum += numbers.inject(:+)
-    numbers.pop
-    break if numbers.empty?
+  all_numbers = []
+  numbers.length.times do |idx|
+    all_numbers << numbers[0..idx]
   end
-  sum
+  all_numbers.flatten.sum
 end
 
-p sum_of_sums([3, 5, 2])
-p sum_of_sums([1, 5, 7, 3])
-p sum_of_sums([4])
-p sum_of_sums([1, 2, 3, 4, 5])
+p sum_of_sums([3, 5, 2]) == (3) + (3 + 5) + (3 + 5 + 2) # -> (21)
+p sum_of_sums([1, 5, 7, 3]) == (1) + (1 + 5) + (1 + 5 + 7) + (1 + 5 + 7 + 3) # -> (36)
+p sum_of_sums([4]) == 4
+p sum_of_sums([1, 2, 3, 4, 5]) == 35
