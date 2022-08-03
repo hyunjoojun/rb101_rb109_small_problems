@@ -1,34 +1,28 @@
 =begin
-input: string
-output: new string with every other characters caplitalized
+Input: A string
+Output: A string
 
-rules:
-- Every other character is capitalized.
-- Remaining characters are lowercase.
-- Characters that are not letters stays the same.
-- Count all characters even they are switched.
+Rules:
+- The every other letters should be upcased.
+- Characters that are not letters stays the same, but counted as characters.
+ when switching between upper and lowercase.
+- Start with the first letter capitalized.
 
 Algorithm:
 - Split the string into characters.
-- If character's index is odd, upcase it.
-- If character's index is even, downcase it.
-- Return new string.
+- The characters with even index gets upcased.
+- The characters with odd index gets downcased.
+- If the character is not a letter, remains the same.
+- Return the new string.
 =end
 
-def staggered_case(words)
-  idx = 0
-  new_chars = words.chars.map do |char|
-    idx += 1
-    idx.odd? ? char.upcase : char.downcase
-  end
-  new_chars.join
-end
-
-def staggered_case(words)
-  idx = 0
-  new_chars = words.chars.map do |char|
-    idx += 1
-    idx.even? ? char.upcase : char.downcase
+def staggered_case(string)
+  new_chars = string.chars.map.with_index do |char, idx|
+    if idx.even?
+      char.upcase
+    else
+      char.downcase
+    end
   end
   new_chars.join
 end
