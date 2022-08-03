@@ -1,24 +1,28 @@
 =begin
-input: array of integers
-output: number rounded to 3 decimal places.
+Input: Array of integers
+Output: A decimal
 
-rules:
-- Input array has integers.
-- Multiply all the integers, then divide it by number of integers in the array.
-- Return the final number rounded to 3 decimal places.
-- Array is non-empty.
+Rules:
+- Multiply all numbers in the array.
+- Divide it by the number of entries in the array to get the average.
+- Print out the result rounded to 3 decimal places.
+- The input array is non-empty.
 
 Algorithm:
-- Covert all integers in floats.
-- Multiply all the numbers.
+- Use inject method to multiply all the numbers.
 - Divide it by the length of the array.
-- Round to 3 decimal places.
+- Use format method to round it to 3 decimal places.
 =end
 
+# def show_multiplicative_average(numbers)
+#   product = numbers.inject(:*).to_f
+#   average = product / numbers.length
+#   puts "The result is #{format('%.3f', average)}"
+# end
+
 def show_multiplicative_average(numbers)
-  product = numbers.inject(:*).to_f
-  average = product / numbers.length
-  puts "The result is #{format('%.3f', average)}"
+  average = numbers.inject(:*).to_f / numbers.length
+  format('%.3f', average)
 end
 
 p show_multiplicative_average([3, 5])                # => The result is 7.500
