@@ -1,41 +1,38 @@
 =begin
-input: two integers
-output: print out numbers, Fizz, Buzz, and FizzBuzz
+Input: Two integers
+Output: Print out numbers with words
 
-rules:
-- The first input number is the starting number.
-- The second input number is the ending number.
-- Print out all the numbers.
-- If a number is divisible by 3, print "Fizz".
-- If a number is divisible by 5, print "Buzz".
-- If a number is divisible by 3 and 5, print "FizzBuzz".
+Rules:
+- The first argument is the starting number.
+- The second argument is the ending number.
+- Print out all the numbers in between.
+- Print 'Fizz' for the numbers that are divisible by 3.
+- Print 'Buzz' for the numbers that are divisible by 5.
+- Print 'FizzBuzz' for the numbers that are divisible by 3 and 5.
 
 Algorithm:
-- Set an array that has all the numbers.
-- Iterate through the array to check if it's divisible by 3 and/or 5.
-- Print number or word accordingly.
+- (starting..ending) print each numbers.
+- if number % 3 print Fizz.
+- if number % 5 print Buzz.
+- if number % 3 && number % 5 print FizzBuzz.
+- else, print number.
 =end
 
-def fizzbuzz_value(num)
-  if (num % 3).zero? && (num % 5).zero?
-    'FizzBuzz'
-  elsif (num % 3).zero?
-    'Fizz'
-  elsif (num % 5).zero?
-    'Buzz'
-  else
-    num
-  end
-end
-
-def fizzbuzz(starting_num, ending_num)
-  numbers = (starting_num..ending_num).to_a
+def fizzbuzz(first, last)
   result = []
 
-  numbers.each do |num|
-    result << fizzbuzz_value(num)
+  (first..last).each do |num|
+    if num % 3 == 0 && num % 5 == 0
+      result << 'FizzBuzz'
+    elsif num % 3 == 0
+      result << 'Fizz'
+    elsif num % 5 == 0
+      result << 'Buzz'
+    else
+      result << num
+    end
   end
-  puts result.join(', ')
+  result.join(', ')
 end
 
-fizzbuzz(1, 15)
+p fizzbuzz(1, 15)
