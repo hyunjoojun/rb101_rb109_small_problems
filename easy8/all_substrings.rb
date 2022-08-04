@@ -1,36 +1,41 @@
 =begin
-input: string
-output: array of all substrings
+Input: A string
+Output: An array of substrings
 
-rules:
-- Get all the substrings.
-- Return array should be arranged in order.
-- All substrings that start at position 0 comes first.
-- All substrings that start at position 1 comes next and so on.
-- Order all substrings from shortest to longest.
+Rules:
+- Return an array with all substrings.
+- Substrings that start at position 0 come first.
+- Then all substrings that start at position 1 and so on.
+- The elements of the array should be sorted from the shortest to the longest.
+- Use the leading_substrings method from previous exercise.
 
 Algorithm:
 - Set up an empty array.
-- Set up an index that increments by 1.
-- Get a substring that we can pass onto leading_substrings method.
-- Push output from leading_substrings into the empty array.
-- Repeat the process until the end.
+- Increment a number starting from 0 to string.size.
+- Set up a substring and use it as leading_substring argument.
+- Combine all the substrings.
 - Return the array.
 =end
 
 def substrings(string)
-  substrings = []
-  (0...string.length).each do |index|
-    this_substring = string[index..-1]
-    substrings << leading_substrings(this_substring)
+  results = []
+  (0...string.size).each do |start_index|
+    this_substring = string[start_index..-1]
+    results.concat(leading_substrings(this_substring))
   end
-  substrings.flatten
+  results
 end
 
 def leading_substrings(string)
-  substrings = []
-  string.chars.each_index { |index| substrings << string[0..index] }
-  substrings
+  string.length.times.map do |idx|
+    string[0..idx]
+  end
 end
 
-p substrings('abcde')
+p substrings('abcde') == [
+  'a', 'ab', 'abc', 'abcd', 'abcde',
+  'b', 'bc', 'bcd', 'bcde',
+  'c', 'cd', 'cde',
+  'd', 'de',
+  'e'
+]
