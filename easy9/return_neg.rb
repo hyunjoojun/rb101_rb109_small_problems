@@ -1,20 +1,21 @@
 =begin
-input: integer
-output: negative integer
+Input: An integer
+Output: A negative integer
 
-rules:
-- Positive or negative number return negative number.
-- If input is 0, return 0.
+Rules:
+- If the input integer is positive, return negative number.
+- If the input integer is negative, return the original number.
+- If the input integer is 0, return 0.
 
 Algorithm:
-- If input is positive number, return -number.
-- All other cases return the original input number.
+- Check if number is positive, if it is return the number with '-'
+- All other numbers, return the original number.
 =end
 
-def negative(number)
-  number.positive? ? -number : number
+def negative(num)
+  num.positive? ? -num : num
 end
 
 p negative(5) == -5
 p negative(-3) == -3
-p negative(0) == 0
+p negative(0) == 0      # There's no such thing as -0 in ruby
