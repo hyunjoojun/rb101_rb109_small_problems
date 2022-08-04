@@ -1,21 +1,34 @@
 =begin
-input: positive integer
-output: reversed integer
+Input: Integer
+Output: Integer
 
-rules:
-- Return number with digits reversed.
-- One digit number returns the same number.
-- Input integer is always positive.
-- No leading zeros in output.
+Rules:
+- Return the number with its digits reversed.
+- No leading zeros in return value.
 
 Algorithm:
-- Covert integer to string.
-- Reverse the string.
-- Convert string to integer.
+- Use digits method.
 =end
 
-def reversed_number(number)
-  number.to_s.reverse.to_i
+def reversed_number(num)
+  num.digits.join.to_i
+end
+
+def reversed_number2(num)
+  digits_size = num.to_s.length
+  new_num = []
+
+  digits_size.times do |idx|
+    new_num << num.to_s[idx]
+  end
+
+  new_num.join.reverse.to_i
+end
+
+def reversed_number3(number)
+  string = number.to_s
+  reversed_string = string.reverse
+  reversed_string.to_i
 end
 
 p reversed_number(12345) == 54321
