@@ -1,47 +1,43 @@
 =begin
-input: string
-output: array of substrings that are palindromic
+Input: A string
+Output: An array of substrings that are palindromic
 
-rules:
-- Palindromic means same sequence of characters forwards and backwords.
-- The output should be arranged in the same sequence as input string.
-- Duplicates must be included.
-- Use substrings method in the previous exercise.
-- Palindromes are case sensitive.
+Rules:
+- Return an array with substrings that are palindromic.
+- Substrings reads the same forwards and backwards.
+- Arrange the return value as the substrings appear in the string.
+- Duplicates should be included.
+- Use the substrings method from previous exercise.
+- Palindromics should be case sensitive.
 
 Algorithm:
-- Write a method that checks if the string is palindrome.
-- Use substrings method to get all substrings.
-- Iterate through each substring.
-- Select all substrings that are palindrome and has more than one characters.
+- Take the all sustrings from the substrings method.
+- Check if they have same characters even it's reversed.
+- If it is, include in the array.
+- Return the array.
 =end
 
 def palindromes(string)
   substrings = substrings(string)
-  substrings.select do |substring|
-    palindromic?(substring)
+  clean_substrings = substrings.map { |word| word.delete('^a-zA-Z') }
+  clean_substrings.select do |sub|
+    sub == sub.reverse && sub.length > 1
   end
-end
-
-def palindromic?(word)
-  word == word.reverse && word.length > 1
 end
 
 def substrings(string)
-  substrings = []
-  (0...string.length).each do |index|
-    this_substring = string[index..-1]
-    substrings << leading_substrings(this_substring)
+  results = []
+  (0...string.size).each do |start_index|
+    this_substring = string[start_index..-1]
+    results.concat(leading_substrings(this_substring))
   end
-  substrings.flatten
+  results
 end
 
 def leading_substrings(string)
-  substrings = []
-  string.chars.each_index do |index|
-    substrings << string[0..index].downcase.delete('^0-9a-z')
+  string.length.times.map do |idx|
+    string[0..idx]
   end
-  substrings
 end
 
 p palindromes('abcd') == []
