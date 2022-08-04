@@ -1,27 +1,27 @@
 =begin
-input: array and hash
-output: string, a greeting message
+Input: An array and a hash
+Output: A Greeting message
 
-rules:
-- The array has person's name.
-- When the array is combined with adjoining spaces, it produces person's full name.
-- The array will always have 2 or more elements.
-- The hash has person's title and occupation.
-- The hash will always have 2 keys and 2 values.
-- Return a greeting message that contains the person's full name,
-and also person's title and occupation.
+Rules:
+- The array contains 2 or more elements of a person's name.
+- When we combine the elements of the array, we will have the full name.
+- The hash contains 2 keys, :title and :occupation with 2 values.
+- Return a greeting message with person's full name, title, and occupation.
 
 Algorithm:
-- Combine the array's elements to get the full-name.
-- Combine the hash's values to get the title.
-- Use string interpolation to return greeting message.
+- Set a variable for full name:
+- Join the elements of the array with a space in between.
+- Set a variable for occupation:
+- hash[:title] and hash[occupation:]
+- Print a message with name and occupation.
 =end
 
-def greetings(name, status)
-  full_name = name.join(' ')
-  job = status.values.join(' ')
+def greetings(names, job)
+  full_name = names.join(' ')
+  job_title = job.values.join(' ')
 
-  "Hello, #{full_name}! Nice to have a #{job} around."
+  puts "Hello, #{full_name}! Nice to have a #{job_title} around."
 end
 
-p greetings(['John', 'Q', 'Doe'], { title: 'Master', occupation: 'Plumber' })
+greetings(['John', 'Q', 'Doe'], { title: 'Master', occupation: 'Plumber' })
+# => Hello, John Q Doe! Nice to have a Master Plumber around.
