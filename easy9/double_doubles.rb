@@ -1,32 +1,48 @@
 =begin
-input: integer
-output: integer
+Input: An integer
+Output: An integer
 
-rules:
-- If the input integer is double number, return the same number.
-- If the input integer is not double number, return number * 2.
-- Double number has even number of digits.
-- Double number has same left side digits and right side digits.
+Rules:
+- Return 2 times input integer if the integer is not double number.
+- If the input integer is double number, return as-is.
+- Double number is a number with even number of digits.
+- Double number has the same left side digits and right side digits.
 
 Algorithm:
-- Check if input integers has even number of digits.
-- If it has even number of digits, compare left side digits to the right side digits.
-- If left side digits are equal to right side digits, return original digits.
-- For all other cases, return the double of input number.
+- Convert digits into string.
+- Get the middle index if string.length is even.
+- Split the string into two using the middle index.
+- Check if the left side is equal to the right side.
+- If it's not equal, do integer * 2.
+- It they are equal return iteger.
 =end
 
-def double_number?(number)
-  string_num = number.to_s
-  center = string_num.size / 2
-  left_side = string_num[0..center - 1]
-  right_side = string_num[center..-1]
+def twice(num)
+  digits_length = num.to_s.length
 
-  string_num.size.even? && left_side == right_side
+  if digits_length.even?
+    middle = digits_length / 2
+    left = num.to_s[0..middle - 1]
+    right = num.to_s[middle..-1]
+
+    left == right ? num : num * 2
+  else
+    num * 2
+  end
 end
 
-def twice(number)
-  double_number?(number) ? number : number * 2
-end
+# def double_number?(number)
+#   string_num = number.to_s
+#   center = string_num.size / 2
+#   left_side = string_num[0..center - 1]
+#   right_side = string_num[center..-1]
+
+#   string_num.size.even? && left_side == right_side
+# end
+
+# def twice(number)
+#   double_number?(number) ? number : number * 2
+# end
 
 p twice(37) == 74
 p twice(44) == 44
