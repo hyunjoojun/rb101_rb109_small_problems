@@ -1,20 +1,27 @@
 =begin
-input: string
-output: new string
+Input: A string
+Output: A string
 
-rules:
-- Every character is doubled in new string.
-- Empty string returns empty string.
+Rules:
+- Return a new string with every character is doubled.
 
 Algorithm:
-- Split all the characters in the input string.
-- Iterate through each characters and double them.
-- Return new string.
+- Set up an empty string.
+- Split the string into characters.
+- Iterate through each characters push the character twice.
+- Return a new string.
 =end
 
+# def repeater(string)
+#   new_string = ''
+#   string.chars do |chr|
+#     new_string << chr << chr
+#   end
+#   new_string
+# end
+
 def repeater(string)
-  doubled_chars = string.chars.map { |char| char + char }
-  doubled_chars.join
+  string.chars.map { |char| char * 2 }.join
 end
 
 p repeater('Hello') == "HHeelllloo"
