@@ -1,27 +1,44 @@
 =begin
-input: string
-output: new string
+Input: A string
+Output: A string
 
-rules:
-- Every character is doubled except vowels, digits, punctuation, and whitespace.
-- Empty string returns empty string.
+Rules:
+- Return a new string with all alphabetic characters doubled.
+- Do not double vowels, digits, punctuation, and white spaces.
 
 Algorithm:
-- Split all the characters in the input string.
-- Iterate through each characters and double them
-  if the character is not included in the exceptions.
+- Set up an empty string.
+- Split the string into characters.
+- If the character is not vowels nor punctuation, digits, nor white spaces,
+  push the characters 2 times into empty string.
+- All other characters, push once.
 - Return new string.
 =end
 
-CONSONANTS = %w(b c d f g h j k l m n p q r s t v w x y z)
+VOWELS = %w(a e i o u)
+
+# def double_consonants(string)
+#   new_string = ''
+
+#   string.chars.each do |char|
+#     if char =~ /[^A-z]/ || VOWELS.include?(char)
+#       new_string << char
+#     else
+#       new_string << char << char
+#     end
+#   end
+
+#   new_string
+# end
 
 def double_consonants(string)
-  result = ''
-  string.each_char do |char|
-    result << char
-    result << char if CONSONANTS.include?(char.downcase)
-  end
-  result
+  string.chars.map do |char|
+    if char =~ /[^A-z]/ || VOWELS.include?(char)
+      char
+    else
+      char * 2
+    end
+  end.join
 end
 
 p double_consonants('String') == "SSttrrinngg"
