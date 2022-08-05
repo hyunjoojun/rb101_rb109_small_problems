@@ -1,27 +1,29 @@
 =begin
-Input: Nested array
+Input: A nested array
 Output: An array
 
 Rules:
-- The nested array has the inner arrays of fruits and quantities.
-- The method buy_fruit has one parameter which is the nested array.
-- The output array should have correct number of each fruit.
-- Ex: If there are 3 'apples' output array should have 3 elements of 'apples'.
+- Input nested array contains inner arrays that contains name of fruit, and a count.
+- Conver the nested array into a array with names of fruits.
+- The name of fruit should be included n times which is equal to the count.
 
 Algorithm:
-- Iterate through the nested array.
-- Set up an empty array.
-- Push the fruit element into the empty array.
-- Use the quantities to push them n amount of times.
+- Iterate through each array.
+- count.times push the word into the output array.
+- Retun the output array.
 =end
 
-def buy_fruit(list)
-  expanded_list = []
+# def buy_fruit(grocery_list)
+#   fruits = []
+#   grocery_list.each do |fruit, count|
+#     count.times { fruits << fruit }
+#   end
+#   fruits
+# end
 
-  list.each do |item|
-    item[1].times { expanded_list << item[0] }
-  end
-  expanded_list
+def buy_fruit(grocery_list)
+  grocery_list.map { |fruit, count| [fruit] * count }.flatten
 end
 
-p buy_fruit([["apples", 3], ["orange", 1], ["bananas", 2]])
+p buy_fruit([["apples", 3], ["orange", 1], ["bananas", 2]]) ==
+  ["apples", "apples", "apples", "orange", "bananas","bananas"]
