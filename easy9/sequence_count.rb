@@ -3,26 +3,36 @@ Input: Two integers
 Output: An array
 
 Rules:
-- The first argument is the number of elements for the output array.
-- The second arguemnt is the first element in the output array.
-- The output array's elements will be multiples of the starting number.
-- The first argument will be always 0 or greater.
-- The second argument can be any integer.
-- If the first argument is 0, an empty array is returned.
+- The first argument is a count.
+- The second argument is the first number of the array.
+- The output array contains the same number of elements as the count argument.
+- The values of each elements will be multiples of the starting number.
+- The count argument is always a positive number including 0.
+- If count argument is 0, return an emtpy array.
+- The starting number argument can be any number.
 
 Algorithm:
-- The first argument is count.
-- The second argument is first number.
-- Iterate through 1 to count.
-- Create a new array by multiplying the first number by 1 to count.
-- Return the new array.
+- Set up an empty array.
+- count.times push the second argument number into the array.
+- push number * incrementing number.
+- Return the array.
 =end
+
+# def sequence(count, num)
+#   array = []
+
+#   count.times do |index|
+#     array << num * (index + 1)
+#   end
+
+#   array
+# end
 
 def sequence(count, first)
   (1..count).map { |value| value * first }
 end
 
-p sequence(5, 1)
-p sequence(4, -7)
-p sequence(3, 0)
-p sequence(0, 1000000)
+p sequence(5, 1) == [1, 2, 3, 4, 5]
+p sequence(4, -7) == [-7, -14, -21, -28]
+p sequence(3, 0) == [0, 0, 0]
+p sequence(0, 1000000) == []
