@@ -1,24 +1,24 @@
 =begin
-Input: string
-Output: array
+Input: A string
+Output: An array
 
 Rules:
-- The words in the string are separated by exactly one space.
+- The string contains words.
+- Count the length of each words.
+- Return an array with the word and the length of the word as an element.
+- The word and the length is separated by a space.
 - Any substring of non-space character is a word.
-- Return an array that contains all the word in the string, and their length.
-- Each element of the array should have the word, its length, and a space in between.
 
 Algorithm:
-- Split the words into an array.
-- Iterate each words to get the length of each words.
-- Return an array with the word and the length.
+- Split the string into words array.
+- Use map method to return the array.
+- Iterate through each words and count its length.
+- Add it to the word with a space in between.
+- Return the array.
 =end
 
-def word_lengths(str_words)
-  words = str_words.split(' ')
-  words.map do |word|
-    word + ' ' + word.length.to_s
-  end
+def word_lengths(words)
+  words.split.map { |word| "#{word} #{word.length}" }
 end
 
 p word_lengths("cow sheep chicken") == ["cow 3", "sheep 5", "chicken 7"]
