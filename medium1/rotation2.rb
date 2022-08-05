@@ -1,29 +1,28 @@
 =begin
 Input: Two integers
-Output: An integer
+Output: One integer
 
 Rules:
-- Rotate the last n digits of a number.
-- First argument is a number.
-- Second argument represents the last n digits of the first argument.
-- When the second argument is 1, the method returns the original number.
+- Rotate the last n digits of the number.
+- The first argument is the number, second argument is n digits.
+- If the second argument is 1, return the same number.
 - Use the rotate_array method from previous exercise.
-- The second argument is always positive number.
+- The second argument will always be positive.
 
 Algorithm:
-- Convert number into an array of digits.
-- Delete the last n digit and set it to a variable, chosen_num.
-- Push the chosen_num into the array.
-- Join the numbers together to return an integer.
+- The second argument n digits will be taken out and placed in the back of the number.
+- We are moving one chosen number to the end.
+- Set a variable chosen_num.
+- Delete that chosen_num and push it back to the number.
+- Return the rotated number.
 =end
 
-def rotate_rightmost_digits(number, digit)
-  digits_arr = number.digits.reverse
+def rotate_rightmost_digits(num, digit)
+  chosen_num = num.to_s[-digit]
+  num_string = num.to_s.delete(chosen_num)
 
-  chosen_num = digits_arr.delete_at(-digit)
-  digits_arr << chosen_num
-
-  digits_arr.join.to_i
+  num_string << chosen_num
+  num_string.to_i
 end
 
 p rotate_rightmost_digits(735291, 1) == 735291
