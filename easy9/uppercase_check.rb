@@ -1,25 +1,23 @@
 =begin
-Input: string
-Output: boolean
+Input: A string
+Output: Boolean
 
 Rules:
-- Input string can be empty.
-- Input string may contain any letters and non alphabetics.
-- The method should return true if all letters are uppercase.
-- The method should return false if any letter is lowercase.
-- The characters that are not letters should be ignored.
+- Return true if all alphabetic characters are uppercase.
+- Return false otherwise.
+- Characters that are not alphabetic should be ignored.
 
 Algorithm:
-- Check if input string is equal to upcased string.
+- Check if string is equal to string.upcase.
 =end
 
 def uppercase?(string)
   string == string.upcase
 end
 
-p uppercase?('t')
-p uppercase?('T')
-p uppercase?('Four Score')
-p uppercase?('FOUR SCORE')
-p uppercase?('4SCORE!')
-p uppercase?('')
+p uppercase?('t') == false
+p uppercase?('T') == true
+p uppercase?('Four Score') == false
+p uppercase?('FOUR SCORE') == true
+p uppercase?('4SCORE!') == true
+p uppercase?('') == true
