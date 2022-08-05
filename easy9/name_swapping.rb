@@ -1,19 +1,23 @@
 =begin
-Input: first name and last name string
-Output: last name, a comma, first name string
+Input: A string
+Output: A string
 
 Rules:
-- Input string has first name and last name with a space in between.
-- Output string has last name, a comma, a space, and the first name.
+- The input string contains a first name, a space, and a last name.
+- Return a string that contains the last name, a comma, a space, and the first name.
 
 Algorithm:
-- Split the name to get an array of names.
-- Return last name, a comma, a space, and the first name.
+- Split the names.
+- Use string interpolation to combine the names.
 =end
 
-def swap_name(full_name)
-  first_name, last_name = full_name.split
+def swap_name(names)
+  first_name, last_name = names.split
   "#{last_name}, #{first_name}"
 end
 
-p swap_name('Joe Roberts')
+# def swap_name(name)
+#   name.split.reverse.join(', ')
+# end
+
+p swap_name('Joe Roberts') == 'Roberts, Joe'
