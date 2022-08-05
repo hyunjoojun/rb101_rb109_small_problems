@@ -1,21 +1,26 @@
 =begin
-Input: integer
-Output: array of integers
+Input: A positive integer
+Output: An array
 
 Rules:
-- Input number will be always greater than 0.
-- Return array of integers in sequence between 1 and the argument.
+- The output array contains all integers starting from 1 to the input integer.
+- The elements should be in numeric order.
+- The input number will always be greater than 0.
 
 Algorithm:
-- Return an array of 1 to input number.
+- Return (1..num) to array.
 =end
 
-def sequence(number)
-  number.positive? ? (1..number).to_a : (number..-1).to_a
+def sequence(num)
+  num.positive? ? (1..num).to_a : (num..1).to_a
 end
+
+# def sequence(num)
+#   1.upto(num).to_a
+# end
 
 p sequence(5)
 p sequence(3)
 p sequence(1)
-p sequence(-4)
+p sequence(-1)
 p sequence(0)
