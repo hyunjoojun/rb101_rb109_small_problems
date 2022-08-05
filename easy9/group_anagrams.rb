@@ -1,12 +1,12 @@
 =begin
-Input: An array
-Output: Prints out arrays of words
+Input: An array of words
+Output: Print out groups of words into arrays.
 
 Rules:
-- Group words into an array that are anagrams.
-- Anagrams are words that have the same exact letters but in a different order.
-- Output an array with anagrams,
-output another array with different anagrams, and so on.
+- Group the words by anagrams.
+- Anagrams are words that have same letters but in a different order.
+- One group of words are in one array.
+- Print out one array then print out another array on the next line.
 
 Algorithm:
 - Iterate through the input array which are words.
@@ -26,7 +26,7 @@ def group_anagrams(words)
     key = word.chars.sort.join
 
     if anagrams.has_key?(key)
-      anagrams[key].push(word)
+      anagrams[key] << word
     else
       anagrams[key] = [word]
     end
