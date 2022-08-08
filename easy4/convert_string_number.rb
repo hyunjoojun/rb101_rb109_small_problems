@@ -3,31 +3,28 @@ Input = A string
 Output = An integer
 
 Rules:
-- Convert numbers in string to the integer.
-- Do not use String#to_i method nor Integer().
-- Do not worry about invalid characters.
-- All characters will be numbers.
-- Do not worry about + or -.
+- Convert a string into an integer.
+- Do not use to_i method.
 
 Algorithm:
-- Write a hash that converts string to number.
-- Split all the characters in input string.
-- Iterate through all the characters and convert it to integer.
-- Combine the integers.
+- Create an array of string integers.
+- Split the string into characters.
+- Iterate through each characters and get the index of created array.
+- Get the array of integers.
+- Conver the array into the integers.
 =end
 
-DIGITS = {
-  '0' => 0, '1' => 1, '2' => 2, '3' => 3, '4' => 4,
-  '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9
-}
+INTEGERS = %w(0 1 2 3 4 5 6 7 8 9)
 
 def string_to_integer(string)
-  digits = string.chars.map { |char| DIGITS[char] }
+  digits = string.chars.map do |num|
+    INTEGERS.index(num)
+  end
 
   value = 0
   digits.each { |digit| value = 10 * value + digit }
   value
 end
 
-p string_to_integer('4321') == 4321
-p string_to_integer('570') == 570
+p string_to_integer('4321')
+p string_to_integer('570')
