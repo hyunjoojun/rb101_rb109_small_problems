@@ -3,28 +3,30 @@ Input: A string
 Output: Print a string in a box
 
 Rules:
-- The input string will always fit the terminal window.
-- Create a box and print it with a string in the middle of the box.
+- The input text will fit in one line.
+- The text should be in the middle of the box.
 
 Algorithm:
-- First line: print '+' and '-' * length of the text and another '+'
-- Second line: print '|' and ' ' * length of the text and another '|'
-- Third line: print '|' and the text and another '|'
-- Fourth line: Repeat second line.
-- Last line: Repeat the first line.
+- First line will be horizontal line.
+- Second to fourth lines will be vertical lines.
+- The last line will be same as the first line.
+- The text will be on the middle of third line.
 =end
 
-def print_in_box(text)
-  horizontal_line = "+#{'-' * (text.length + 2)}+"
-  empty_line = "|#{' ' * (text.length + 2)}|"
+MAX_LENGTH = 76
 
-  puts horizontal_line
-  puts empty_line
+def print_in_box(text)
+  spaces = text.length > MAX_LENGTH ? MAX_LENGTH : text.length
+  horizontal = '+' + '-' * (spaces + 2) + '+'
+  vertical = '|' + ' ' * (spaces + 2) + '|'
+
+  puts horizontal
+  puts vertical
   puts "| #{text} |"
-  puts empty_line
-  puts horizontal_line
+  puts vertical
+  puts horizontal
 end
 
-print_in_box('')
+print_in_box('hi')
 print_in_box('To boldly go where no one has gone before.')
-print_in_box('So coooooooooooool!! Love it!!! :)')
+print_in_box('')
