@@ -3,16 +3,15 @@ Input: An integer
 Output: An integer
 
 Rules:
-- Rotating the number means moving the first digit of number to the end of the number.
-- For example, number 735291 and we rotate it to the left to get 352917.
-- Keep the first digit and rotate remaining digits and we get 329175.
-- Keep the first 2 digits and rotate again to get 321759.
-- Keep the first 3 digits and rotate again to get 321597.
-- Keep the first 4 digits and rotate again to get the final number 321579.
-- This is called max rotation of number.
-- Write a method that does the max rotation to input integer.
-- Use the rotate_rightmost_digits method from previous exercise.
+- Return the maximum rotation of the input number.
+- Use rotate_rightmost_digits method from previous exercise.
 - Do not have to handle multiple 0s.
+- Example of maximun rotation:
+- 735291 rotate it to the left 352917.
+- Keep the first digit fixed in place, rotate the remaining, 329175.
+- Keep the first 2 digits fixed in place, rotate the remaining, 321759.
+- Keep the first 3 digits fixed in place, rotate the remaining, 321597.
+- Keep the first 4 digits fixed in place, rotate the remaining, 321579.
 
 Algorithm:
 - Repeat the rotating number using rotate_rightmost_digits method.
@@ -23,6 +22,14 @@ Algorithm:
 - Return the rotated number.
 =end
 
+def rotate_rightmost_digits(num, digit)
+  chosen_num = num.to_s[-digit]
+  num_string = num.to_s.delete(chosen_num)
+
+  num_string << chosen_num
+  num_string.to_i
+end
+
 def max_rotation(num)
   count = num.digits.size
   while count > 1
@@ -30,15 +37,6 @@ def max_rotation(num)
     count -= 1
   end
   num
-end
-
-def rotate_rightmost_digits(number, digit)
-  digits_arr = number.digits.reverse
-
-  chosen_num = digits_arr.delete_at(-digit)
-  digits_arr << chosen_num
-
-  digits_arr.join.to_i
 end
 
 p max_rotation(735291) == 321579
