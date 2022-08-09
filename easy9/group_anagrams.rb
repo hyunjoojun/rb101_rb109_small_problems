@@ -3,41 +3,34 @@ Input: An array of words
 Output: Print out groups of words into arrays.
 
 Rules:
-- Group the words by anagrams.
+- Print out groups of words that are anagrams.
 - Anagrams are words that have same letters but in a different order.
-- One group of words are in one array.
-- Print out one array then print out another array on the next line.
+- Group them into arrays and print out the arrays.
 
 Algorithm:
-- Iterate through the input array which are words.
-- Split each word into letters and sort the letters.
-- Compare sorted letters to check if the words are anagrams to each other.
-- If sorted letters equals to the other letters, group them into an array.
-- When the iteration is done, output the array.
+- Set up an empty hash.
+- Iterate through the words.
+- Sort the letters in alphabetical order, compare it to other words.
+- Set the sorted letter word as a key.
+- If the key exists in the hash, push the word into the array.
+- If the key does not exist, set up new key.
+- Print out the words using the hash.
 =end
 
 words =  ['demo', 'none', 'tied', 'evil', 'dome', 'mode', 'live',
   'fowl', 'veil', 'wolf', 'diet', 'vile', 'edit', 'tide',
   'flow', 'neon']
 
-def group_anagrams(words)
-  anagrams = {}
-  words.each do |word|
-    key = word.chars.sort.join
+anagrams = {}
 
-    if anagrams.has_key?(key)
-      anagrams[key] << word
-    else
-      anagrams[key] = [word]
-    end
-  end
-  anagrams
-end
+words.each do |word|
+  key = word.chars.sort.join
 
-def print_anagrams(words)
-  group_anagrams(words).each_value do |value|
-    p value
+  if anagrams.has_key?(key)
+    anagrams[key] << word
+  else
+    anagrams[key] = [word]
   end
 end
 
-print_anagrams(words)
+anagrams.values.each { |value| p value }
