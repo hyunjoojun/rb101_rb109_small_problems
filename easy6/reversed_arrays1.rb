@@ -3,34 +3,35 @@ Input: An array
 Output: An array
 
 Rules:
-- Reverse the elements of the input array.
-- Mutate the array, so object id stays the same.
-- Do not use reverse method.
+- Write your own Array#reverse method.
+- Mutate the input array.
 
 Algorithm:
-- Set an empty array.
-- Use pop method to take the last element of the original array.
-- push element into the new empty array.
-- Shift all the elements back to original array.
+- Create two index.
+- Increment one index, decrement another index.
+- Swith the elements that's associated with the index.
 =end
 
 # def reverse!(arr)
-#   left_idx = 0
-#   right_idx = -1
-
-#   while left_idx < arr.length / 2
-#     arr[left_idx], arr[right_idx] = arr[right_idx], arr[left_idx]
-#     left_idx += 1
-#     right_idx -= 1
-#   end
+#   new_arr = []
+#   new_arr << arr.pop until arr.empty?
+#   arr << new_arr.shift until new_arr.empty?
 #   arr
 # end
 
-def reverse!(arr)
-  new_arr = []
-  new_arr << arr.pop until arr.empty?
-  arr << new_arr.shift until new_arr.empty?
-  arr
+def reverse!(list)
+  index = 0
+  reverse_index = -1
+  return list if list.size <= 1
+
+  loop do
+    list[index], list[reverse_index] = list[reverse_index], list[index]
+    index += 1
+    reverse_index -= 1
+    break if index == (list.length / 2)
+  end
+
+  list
 end
 
 list = [1,2,3,4]
