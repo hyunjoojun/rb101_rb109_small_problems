@@ -3,27 +3,26 @@ Input: A string
 Output: An array of substrings
 
 Rules:
-- Return an array with all substrings.
-- Substrings that start at position 0 come first.
-- Then all substrings that start at position 1 and so on.
-- The elements of the array should be sorted from the shortest to the longest.
-- Use the leading_substrings method from previous exercise.
+- Return all substrings of an input string.
+- The returned list should be in order where the substring begins.
+- From the shortest to the longest.
+- Use the leading_substring method from previous exercise.
 
 Algorithm:
-- Set up an empty array.
-- Increment a number starting from 0 to string.size.
-- Set up a substring and use it as leading_substring argument.
-- Combine all the substrings.
-- Return the array.
+- Repeat the leading_substring method.
+- Increment starting index from 0 to string.size
+- Combine the nested array to get one array.
 =end
 
 def substrings(string)
-  results = []
+  result = []
+
   (0...string.size).each do |start_index|
-    this_substring = string[start_index..-1]
-    results.concat(leading_substrings(this_substring))
+    this_substring = string[start_index..]
+    result << leading_substrings(this_substring)
   end
-  results
+
+  result.flatten
 end
 
 def leading_substrings(string)
