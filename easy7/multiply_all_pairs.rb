@@ -3,29 +3,21 @@ Input: Two arrays
 Output: One array
 
 Rules:
-- Two arrays contains list of numbers.
-- The new array contains the product of every pair of numbers
-that can be formed between the elements of the two arrays.
-- The new array should be sorted by increasing value.
-- Both arrays contains at least one number.
+- There are two arrays of numbers.
+- Return a new array that contains the product of every pair of numbers.
+- The new array elements are sorted by increasing value.
+- Both input arrays are non-empty.
 
 Algorithm:
-- Get all pairs between the elements of the two arrays.
-- Multiply them and make new array.
+- arr1.product(arr2) = all pairs
+- Multiply all the pairs to get the elements of the new array.
+- Sort the values.
+- Return new array.
 =end
 
-# def multiply_all_pairs(arr1, arr2)
-#   products = []
-#   arr1.each do |item_1|
-#     arr2.each do |item_2|
-#       products << item_1 * item_2
-#     end
-#   end
-#   products.sort
-# end
-
-def multiply_all_pairs(array_1, array_2)
-  array_1.product(array_2).map { |num1, num2| num1 * num2 }.sort
+def multiply_all_pairs(arr1, arr2)
+  pairs = arr1.product(arr2)
+  pairs.map { |pair| pair.inject(:*) }.sort
 end
 
 p multiply_all_pairs([2, 4], [4, 3, 1, 2]) == [2, 4, 4, 6, 8, 8, 12, 16]
