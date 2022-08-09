@@ -1,25 +1,19 @@
 =begin
 Input: An array
-Output: An array
+Output: A transformed array
 
 Rules:
-- Return array of strings.
-- Remove all the vowels.
-- Both upper case and lower case vowels should be removed.
+- The input array contains strings.
+- Return an array of same string values but remove vowels.
 
 Algorithm:
-- Setup a constant for vowels.
-- Iterate through the words in array.
-- Delete vowels.
-- Return a new array.
+- Iterate through the array of words and delete the vowels.
+- Use map method to transform the array.
+- Return the new array.
 =end
 
-VOWELS = "AEIOUaeiou"
-
 def remove_vowels(array)
-  array.map do |words|
-    words.delete(VOWELS)
-  end
+  array.map { |word| word.delete('AEIOUaeiou') }
 end
 
 p remove_vowels(%w(abcdefghijklmnopqrstuvwxyz)) == %w(bcdfghjklmnpqrstvwxyz)
