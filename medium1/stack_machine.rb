@@ -13,7 +13,8 @@ Algorithm:
 - A stack will be an array.
 - Any number in the input string will become a register value.
 - Split the input string into elements.
-- Follow which command does what.
+- Each elements will do some operation with the register and stack.
+- Follow the problem description to create cases.
 =end
 
 def minilang(commands)
