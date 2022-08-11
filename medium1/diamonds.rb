@@ -8,22 +8,27 @@ Rules:
 - Use empty spaces and * to make a diamond.
 
 Algorithm:
-- Set number of stars = n - 2 * distance from center
-- stars = '*' * number of stars.
-- put the stars in the middle of the line.
-- Once we print the top part of the diamond, repeat for the bottom part.
+- 1st line upto middle line, the number of stars increase.
+- 1st line starts with 1 star.
+- Until the middle line (n / 2), number of stars increase by 2.
+- The middle line the number of stars = n
+- The second half of diamond can be repeated from middle to 1.
 =end
 
-def print_row(grid_size, distance_from_center)
-  number_of_stars = grid_size - 2 * distance_from_center
-  stars = '*' * number_of_stars
-  puts stars.center(grid_size)
-end
+def diamond(length)
+  middle = (length / 2) + 1
+  number_of_stars = 1
 
-def diamond(grid_size)
-  max_distance = (grid_size - 1) / 2
-  max_distance.downto(0) { |distance| print_row(grid_size, distance) }
-  1.upto(max_distance)   { |distance| print_row(grid_size, distance) }
+  middle.times do
+    puts ('*' * number_of_stars).center(length)
+    number_of_stars += 2
+  end
+
+  number_of_stars -= 4
+  (length / 2).times do
+    puts ('*' * number_of_stars).center(length)
+    number_of_stars -= 2
+  end
 end
 
 diamond(3)
