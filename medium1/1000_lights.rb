@@ -20,35 +20,24 @@ Algorithm:
 - Return an array if the value of hash is on.
 =end
 
-# initialize the lights hash
-def initialize_lights(number_of_lights)
-  lights = Hash.new
-  1.upto(number_of_lights) { |number| lights[number] = "off" }
-  lights
-end
+def toggle_lights(n)
+  switches = Array.new(n) { false }
+  on_switches = []
 
-# toggle every nth light in lights hash
-def toggle_every_nth_light(lights, nth)
-  lights.each do |position, state|
-    if position % nth == 0
-      lights[position] = (state == "off") ? "on" : "off"
+  1.upto(n) do |iteration|
+    0.upto(switches.length - 1) do |i|
+      if ((i + 1) % iteration).zero?
+        switches[i] = !switches[i]
+      end
     end
   end
-end
 
-# return list of light numbers that are on
-def on_lights(lights)
-  lights.select { |_position, state| state == "on" }.keys
-end
-
-# Run entire program for number of lights
-def toggle_lights(number_of_lights)
-  lights = initialize_lights(number_of_lights)
-  1.upto(lights.size) do |iteration_number|
-    toggle_every_nth_light(lights, iteration_number)
+  switches.each_with_index do |switch, idx|
+    on_switches << (idx + 1) if switch
   end
-
-  on_lights(lights)
+  on_switches
 end
 
+p toggle_lights(5)
+p toggle_lights(10)
 p toggle_lights(1000)
