@@ -20,15 +20,14 @@ STARTING = [ '(', '[', '{' ]
 ENDING = [ ')', ']', '}' ]
 
 def balanced?(string)
-  parentheses = []
-
-  string.chars do |char|
-    if STARTING.include?(char) || ENDING.include?(char)
-      parentheses << char
-    end
+  parens = 0
+  string.each_char do |char|
+    parens += 1 if STARTING.include?(char)
+    parens -= 1 if ENDING.include?(char)
+    break if parens < 0
   end
-  return false if ENDING.include?(parentheses[0]) || STARTING.include?(parentheses[-1])
-  parentheses.length.even?
+
+  parens.zero?
 end
 
 p balanced?('What (is) this?') == true
@@ -41,7 +40,7 @@ p balanced?(')Hey!(') == false
 p balanced?('What ((is))) up(') == false
 
 p balanced?('()') == true
-p balanced?('()()') == true
+p balanced?('()))') == false
 p balanced?('(())') == true
 p balanced?(')(') == false
 p balanced?('{}()') == true
