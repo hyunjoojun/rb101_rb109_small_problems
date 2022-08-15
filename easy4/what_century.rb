@@ -3,37 +3,42 @@ Input = Year (Integer)
 Output = Century (String)
 
 Rules:
-- Return the century when a year is given.
-- The centruy begins with the number and ends with st, nd, rd, or th.
-- 1901-2000 is the 20th century.
-- 2001-2100 is the 21st century.
+- The input number is an integer that represents a year.
+- Return the century with number that ends with th, st, nd, or rd.
+- New centuries begin in years that end with 01.
+- Ex: 1901 - 2000 is 20th century.
+-     2001 - 2100 is 21st century.
 
 Algorithm:
-- (year / 100) + 1 gives the century number.
-- If year % 10 == 0, year / 100 is the century.
-- When century ends with 1, add st.
-- When century ends with 2, add nd.
-- When century ends with 3, add rd.
-- When century ends with 11, 12, or 13 add th.
-- All other numbers, add th.
+- (year / 100) + 1 = century.
+- If year % 10 == 0 then century = year / 100
+- If century ends with 1, add st.
+- If century ends with 2, add nd.
+- If century ends with 3, add rd.
+- If century ends with other numbers, add th.
+- Add th if century ens with 11, 12, or 13.
 =end
 
-def centruy_ending(centruy)
-  return 'th' if centruy.to_s.end_with?('11', '12', '13')
-
-  last_digit = centruy.to_s[-1]
-  case last_digit
-  when '1' then 'st'
-  when '2' then 'nd'
-  when '3' then 'rd'
-  else 'th'
+def century(year)
+  if year % 10 == 0
+    century = year / 100
+  else
+    century = (year / 100) + 1
   end
+  century.to_s + add_ending(century)
 end
 
-def century(year)
-  century = (year / 100) + 1
-  century -= 1 if year % 100 == 0
-  century.to_s + centruy_ending(century)
+def add_ending(century)
+  str_century = century.to_s
+  return 'th' if str_century.end_with?('11', '12', '13')
+
+  last_digit = century % 10
+  case last_digit
+  when 1 then 'st'
+  when 2 then 'nd'
+  when 3 then 'rd'
+  else 'th'
+  end
 end
 
 p century(2000) == '20th'
