@@ -3,32 +3,25 @@ Input: A string
 Output: An array of substrings
 
 Rules:
-- Return all substrings of an input string.
-- The returned list should be in order where the substring begins.
-- From the shortest to the longest.
-- Use the leading_substring method from previous exercise.
+- Return a list of all substrings.
+- The list should be in order, the shortest to the longest.
+- Use the leading_substrings method from previous exercise.
 
 Algorithm:
-- Repeat the leading_substring method.
-- Increment starting index from 0 to string.size
-- Combine the nested array to get one array.
+- The leading_substring method gives substrings that starts with the first letter only.
+- Should increment the index to get all the substrings.
 =end
-
-def substrings(string)
-  result = []
-
-  (0...string.size).each do |start_index|
-    this_substring = string[start_index..]
-    result << leading_substrings(this_substring)
-  end
-
-  result.flatten
-end
 
 def leading_substrings(string)
   string.length.times.map do |idx|
     string[0..idx]
   end
+end
+
+def substrings(string)
+  string.length.times.map do |idx|
+    leading_substrings(string[idx..-1])
+  end.flatten
 end
 
 p substrings('abcde') == [
