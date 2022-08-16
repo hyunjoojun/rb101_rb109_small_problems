@@ -20,7 +20,7 @@ def sum_square_difference(num)
   sum = (1..num).sum
   sum_sq = sum ** 2
 
-  square = (1..num).map { |num| num ** 2 }
+  square = (1..num).map { |n| n ** 2 }
   sq_sum = square.sum
 
   sum_sq - sq_sum
