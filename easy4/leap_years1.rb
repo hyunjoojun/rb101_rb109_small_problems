@@ -34,3 +34,7 @@ p leap_year?(1700) == false
 p leap_year?(1) == false
 p leap_year?(100) == false
 p leap_year?(400) == true
+
+# def leap_year?(year)
+#   year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)
+# end
