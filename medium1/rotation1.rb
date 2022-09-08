@@ -3,8 +3,8 @@ Input: An array
 Output: A rotated array
 
 Rules:
-- The original array shoud not be modified.
-- Move the first element to the end of the array.
+- The first element of the array moves to the end of the array.
+- Do not mutate the original array.
 - Do not use rotate method.
 
 Algorithm:
