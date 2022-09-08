@@ -3,14 +3,12 @@ Input: An integer
 Output: An array
 
 Rules:
-- There is a bank of switches numbered 1 to n.
-- All the lights are off at the starting point.
-- On round 1, toggle all switches so all the lights are on.
-- On round 2, toggle 2, 4, 6 and so on.
-- On round 3, toggle 3, 6, 9 and so on.
-- Repeat the process until we finish n rounds.
-- n will be the argument of the method we create.
-- Return an array contains switch numbers that are on.
+- There is a bank of switches which are numbered 1 to n.
+- Round 1, all the lights are off.
+- Round 2, toggle 2, 4, 6 and so on.
+- Round 3, toggle 3, 6, 9 and so on.
+- Repeat until you reach round n.
+- Return an array with the numbers of lights that are on.
 
 Algorithm:
 - Create an array with n elements that are false which means off, true means on.
@@ -24,16 +22,15 @@ Algorithm:
 - Return a new array that contains switch numbers that are on.
 =end
 
-def toggle_lights(number_of_lights)
-  switches = Array.new(number_of_lights) { false }
+def on_lights(number_of_lights)
+  lights = Array.new(number_of_lights)
 
-  1.upto(number_of_lights) do |round|
-    0.upto(number_of_lights - 1) do |idx|
-      switches[idx] = !switches[idx] if (idx + 1) % round == 0
+  number_of_lights.times do |round|
+    lights.map!.with_index do |boolean, idx|
+      (idx + 1) % (round + 1) == 0 ? !boolean : boolean
     end
   end
-
-  boolean_to_numbers(switches)
+  boolean_to_numbers(lights)
 end
 
 def boolean_to_numbers(array)
@@ -44,6 +41,18 @@ def boolean_to_numbers(array)
   numbers
 end
 
-p toggle_lights(5)
-p toggle_lights(10)
-p toggle_lights(1000)
+p on_lights(5)
+p on_lights(10)
+p on_lights(1000)
+
+# def toggle_lights(number_of_lights)
+#   switches = Array.new(number_of_lights) { false }
+
+#   1.upto(number_of_lights) do |round|
+#     0.upto(number_of_lights - 1) do |idx|
+#       switches[idx] = !switches[idx] if (idx + 1) % round == 0
+#     end
+#   end
+
+#   boolean_to_numbers(switches)
+# end
