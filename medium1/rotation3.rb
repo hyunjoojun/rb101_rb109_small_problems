@@ -3,14 +3,15 @@ Input: An integer
 Output: An integer
 
 Rules:
-- Rotate a number to the maximum rotation.
+- Get a maximum rotation of the input number.
+- Ex: 735291
+- Rotate it to the left, 352917.
+- Keep the first digit fixed in place, rotate the remainders to get 329175.
+- Keep the first 2 digits fixed in place, rotate the remainders to get 321759.
+- Keep the first 3 digits fixed in place, rotate the remainders to get 321597.
+- Keep the first 4 digits fixed in place, rotate the remainders to get 321579.
 - Use the rotate_rightmost_digits method from previous exercise.
-- For example: 735291
-- Rotate it to the left to get 352917.
-- Keep the first digit fixed in place, rotate remainders to get 329175.
-- Keep the first 2 digits fixed in place, rotate again to get 321759.
-- Keep the first 3 digits fixed in place, rotate again to get 321597.
-- Keep the first 4 digits fixed in place, rotate again to get 321579.
+- Do not have to handle multiple 0s.
 
 Algorithm:
 - rotate_rightmost_digits method uses 'digit' to choose a number
@@ -24,8 +25,8 @@ Algorithm:
 def max_rotation(number)
   length = number.digits.size
 
-  length.downto(2) do |n|
-    number = rotate_rightmost_digits(number, n)
+  length.downto(2) do |digit|
+    number = rotate_rightmost_digits(number, digit)
   end
   number
 end
