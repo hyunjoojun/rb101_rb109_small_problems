@@ -3,25 +3,22 @@ Input: An integer (nth)
 Output: An integer (nth number in fibonacci numbers)
 
 Rules:
-- Write a method that returns a number that's nth of fibonacci numbers.
-- nth is the input integer of the method.
-- Do not use recursive method.
+- Do not use recursion and rewrite fibonacci method.
+- Fibonacci numbers starts with two 1s.
+- Add previous 2 numbers to get the next number.
+- The input integer will be n and the method outputs the nth number.
 
 Algorithm:
-- Fibonacci numbers starts with two 1s = [1, 1]
-- Add two numbers until its length = input number
+- Fibonacci numbers = [1, 1]
+- Add two numbers until we get nth number.
 - Return the last number of the array.
 =end
 
 def fibonacci(nth)
-  numbers = [1, 1]
+  fibs = [1, 1]
 
-  loop do
-    numbers << numbers.last(2).sum
-    break if numbers.length == nth
-  end
-
-  numbers.last
+  (nth - 2).times { fibs << fibs.last(2).sum }
+  fibs.last
 end
 
 p fibonacci(20) == 6765
