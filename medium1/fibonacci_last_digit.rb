@@ -11,15 +11,22 @@ Algorithm:
 - We can get the last digit with % 10.
 =end
 
-def fibonacci(nth)
-  fibs = [1, 1]
+# def fibonacci(nth)
+#   fibs = [1, 1]
 
-  (nth - 2).times { fibs << fibs.last(2).sum }
-  fibs.last
-end
+#   (nth - 2).times { fibs << fibs.last(2).sum }
+#   fibs.last
+# end
+
+# def fibonacci_last(nth)
+#   fibonacci(nth % 60) % 10
+# end
 
 def fibonacci_last(nth)
-  fibonacci(nth % 60) % 10
+  fibs = [1, 1]
+
+  ((nth % 60) - 2).times { fibs << fibs.last(2).sum }
+  fibs.last % 10
 end
 
 p fibonacci_last(15)        # -> 0  (the 15th Fibonacci number is 610)
