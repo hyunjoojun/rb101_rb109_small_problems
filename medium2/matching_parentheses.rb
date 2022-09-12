@@ -3,31 +3,36 @@ Input: A string
 Output: true or false
 
 Rules:
-- If all parentheses are matching in pairs, return true.
+- Return true if all parentheses match.
 - Return false otherwise.
-- If the parentheses starts with ')' return false.
+- All parentheses must start with '('
+- When we open parentheses, must be closed.
 
 Algorithm:
-- Create an empty array.
-- Split the string into characters.
-- If the charcter is equal to '(' or ')' push them into the array.
-- If the array starts with ')' then return false.
-- Count how many of '(' and ')' in the array.
-- If the count does not match return false, otherwise return true.
+- Split all the characters in the string.
+- Setup a variable value = 0
+- If a character is equal to the starting parentheses, add 1 to the value.
+- If a character is equal to the closing parentheses, subtract 1 to the value.
+- If closing parentheses come first which will make negative value, return false.
+- After the iteration, if value = 0, return true else false.
 =end
 
-STARTING = [ '(', '[', '{' ]
-ENDING = [ ')', ']', '}' ]
+PAIRS = {
+  '(' => ')',
+  '[' => ']',
+  '{' => '}'
+}
 
 def balanced?(string)
-  parens = 0
-  string.each_char do |char|
-    parens += 1 if STARTING.include?(char)
-    parens -= 1 if ENDING.include?(char)
-    break if parens < 0
+  value = 0
+
+  string.chars do |char|
+    value += 1 if PAIRS.keys.include?(char)
+    value -= 1 if PAIRS.values.include?(char)
+    break if value < 0
   end
 
-  parens.zero?
+  value.zero?
 end
 
 p balanced?('What (is) this?') == true
