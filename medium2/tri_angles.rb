@@ -3,33 +3,32 @@ Input: 3 angles of a triangle (integers)
 Output: A symbol, name of the triangle or invalid
 
 Rules:
-- One angle is 90 = right
-- All 3 angles are less than 90 = acute
-- One angle is greater than 90 = obtuse
-- If the sum of all 3 angles is not 180, invalid triangle.
-- If any angle is less or equal to 0, invalid triangle.
-- 3 angels are arguments and return a symbol.
-- All numbers are integers and they are degrees.
+- 3 angels of triangles are arguments.
+- If one angle is 90 then it's a right triangle.
+- If all 3 angles are less than 90, it's an acute triangle.
+- If one angle is greater than 90, it's an obtuse triangle.
+- The sum of all 3 angles is equal to 180.
+- All angles must be greater than 0.
+- Return a symbol, :right, :acute, :obtuse, or :invalid.
+- All numbers are integers and degrees.
 
 Algorithm:
-- Create an array of angles.
-- If the sum of 3 angles is not equal to 180, return :invalid.
-- If any angles are < 0, return :invalid.
-- If any of the angles equal to 90, :right.
-- If all the angles are less than 90, :acute.
-- If any of the angles is greater than 90, :obtuse.
+- Make an array of angles, check if the sum == 180.
+- Check if all the angles are > 0.
+- Return the symbol according to the angles given.
 =end
 
 def triangle(a1, a2, a3)
   angles = [a1, a2, a3]
-  return :invalid if angles.sum != 180 || angles.any?(0)
 
-  if angles.any?(90)
+  if angles.sum != 180 || angles.include?(0)
+    :invalid
+  elsif angles.include?(90)
     :right
-  elsif angles.all? { |angle| angle < 90 }
-    :acute
-  else
+  elsif angles.any? { |angle| angle > 90 }
     :obtuse
+  else
+    :acute
   end
 end
 
