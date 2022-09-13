@@ -3,25 +3,21 @@ Input: An integer
 Output: Difference between the sum (integer)
 
 Rules:
-- Starting from 1 to input number, get the sum square and square sum.
-- Return the difference between the sum square and square sum.
-- The sum square is square of the sum of all the numbers from 1 to input number.
-- The square sum is sum of all the squares from 1 to input number.
+- Get the difference between the square of the sum and sum of the squares.
+- The input number is an integer.
+- Get the sum of 1 through the input number and square it to get the sum square.
+- Get the square of 1 to input number and add them together to get the square sum.
+- Get the difference between the two.
 
 Algorithm:
-- sum = (1..n).sum (The sum of 1 to n number.)
-- sum_sq = sum ** 2
-- square = (1..n).map { |num| num ** 2 }
-- sq_sum = square.sum
-- diff = sum_sq - sq_sum
+- sum_sq = (1..num).sum**2
+- sq_sum = (1..num).map { |num| num**2 }.sum
+- sum_sq - sq_sum
 =end
 
 def sum_square_difference(num)
-  sum = (1..num).sum
-  sum_sq = sum**2
-
-  square = (1..num).map { |n| n**2 }
-  sq_sum = square.sum
+  sum_sq = (1..num).sum**2
+  sq_sum = (1..num).map { |n| n**2 }.sum
 
   sum_sq - sq_sum
 end
