@@ -3,23 +3,32 @@ Input: year (integer)
 Output: An integer
 
 Rules:
-- Return how many of Friday the 13ths occured in the input year.
-- Assume that the year will be always greater than 1752.
+- Return number of Friday the 13ths that occured in the input year.
+- The input year will be always greater than 1752.
 
 Algorithm:
 - months = (1..12)
-- Time.local(year, month, 13).friday?
-- Increment the count when we get true.
-- Return the count.
+- boolean array = Time.local(year, month, 13).friday?
+- Count how many trues are in the array.
 =end
 
 def friday_13th(year)
-  count = 0
-  (1..12).each do |month|
-    count += 1 if Time.local(year, month, 13).friday?
+  months = (1..12)
+
+  friday_13th = months.map do |month|
+    Time.local(year, month, 13).friday?
   end
-  count
+
+  friday_13th.count(true)
 end
+
+# def friday_13th(year)
+#   count = 0
+#   (1..12).each do |month|
+#     count += 1 if Time.local(year, month, 13).friday?
+#   end
+#   count
+# end
 
 p friday_13th(2015) == 3
 p friday_13th(1986) == 1
