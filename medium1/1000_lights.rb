@@ -3,23 +3,24 @@ Input: An integer
 Output: An array
 
 Rules:
-- There is a bank of switches which are numbered 1 to n.
-- Round 1, all the lights are off.
-- Round 2, toggle 2, 4, 6 and so on.
-- Round 3, toggle 3, 6, 9 and so on.
-- Repeat until you reach round n.
-- Return an array with the numbers of lights that are on.
+- The input integer represents number of light switches.
+- The switches are numbered 1 to n.
+- n also represents the number of rounds that I need to toggle switches.
+- If n = 5
+  - Round 1 : Every light is on.
+  - Round 2 : Toggle 2, 4 => 1, 3, 5 are on.
+  - Round 3 : Toggle 3 => 1, 5 are on.
+  - Round 4 : Toggle 4 => 1, 4, 5 are on.
+  - Round 5 : Toggle 5 => 1, 4 are on.
+- Return an array where the elements are on switches. [1, 4]
+- If n = 10, return [1, 4, 9]
 
 Algorithm:
-- Create an array with n elements that are false which means off, true means on.
-- Repeat rounds for n number of times.
-- Each round toggle switch number that are divisible by round number.
-  - Round 1 : numbers that are divisible by 1 which are 1, 2, 3 and so on.
-  - Round 2 : numbers that are divisible by 2 which are 2, 4, 6 and so on.
-  - Round 3 : numbers that are divisible by 3 which are 3, 6, 9 and so on.
-- When we get an array of booleans, get the light numbers that are on.
-   = values that are true.
-- Return a new array that contains switch numbers that are on.
+- Create an array with n number of elements.
+- On / Off can be created as True / False.
+- if n = 5, [false, false, false, false, false] meaning lights are off.
+- When I toggle the switch false becomes true.
+- [true, false, false, true, false], return index + 1 of trues as an array.
 =end
 
 def on_lights(number_of_lights)
