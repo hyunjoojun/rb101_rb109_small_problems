@@ -7,26 +7,23 @@ Rules:
 - Do not use to_i method.
 
 Algorithm:
-- Create an array that contains string numbers as elements.
-- Split the string into characters.
-- Iterate through each characters and get the index of created array.
-- Get the array of integers.
-- Conver the array into the integers.
+- Create an array of string numbers.
+- Split the input string into characters.
+- Iterate through the characters array.
+- return the index of the character in string numbers array.
+- After we get the index array which are the digits, convert it to one integer.
 =end
 
-STRING_NUMBERS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+STR_NUMBERS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 def string_to_integer(string)
-  digits = string.chars.map do |num|
-    STRING_NUMBERS.index(num)
+  digits = string.chars.map do |char|
+    STR_NUMBERS.index(char)
   end
-  convert_array_to_num(digits)
-end
 
-def convert_array_to_num(arr)
-  value = 0
-  arr.each { |digit| value = 10 * value + digit }
-  value
+  sum = 0
+  digits.each { |digit| sum = (sum * 10) + digit }
+  sum
 end
 
 p string_to_integer('4321')
