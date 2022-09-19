@@ -25,7 +25,7 @@ def substrings(string)
 
   (0...string.length).each do |idx1|
     (0...string.length).each do |idx2|
-      substrings << string[idx1..idx2]
+      substrings << string[idx1..idx2] if idx2 >= idx1
     end
   end
   substrings
