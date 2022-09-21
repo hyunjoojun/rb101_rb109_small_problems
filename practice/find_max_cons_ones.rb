@@ -14,6 +14,8 @@
 # Repeat the process and get the maximum number in the lengths array.
 
 def find_max_consecutive_ones(array)
+  return 0 if array.none? { |num| num == 1 }
+
   length = 0
   consecutive_lengths = []
   array.each do |num|
@@ -24,8 +26,6 @@ def find_max_consecutive_ones(array)
       length = 0
     end
   end
-  return 0 if consecutive_lengths.empty?
-
   consecutive_lengths.max
 end
 
