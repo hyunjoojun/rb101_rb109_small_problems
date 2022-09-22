@@ -12,7 +12,7 @@
 # If there is 'b' in the string, the string has to end with 'a', false
 
 def check_string(string)
-  return false if !string.include?('a')
+  return false unless string.include?('a')
 
   string.chars == string.chars.sort
 end
