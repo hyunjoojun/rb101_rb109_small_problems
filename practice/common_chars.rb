@@ -18,20 +18,44 @@ Algorithm:
 - Split the first string into characters.
 - Iterate through each characters and check if all the strings has the character.
 - If all strings have the character, select the character and return it.
+
+# Find the shortest word.
+# Break the shortest word into characters.
+# Iterate through the characters, check if all the words contain the character.
+# If yes, then push the character into a new array.
+# Delete the letter from the words.
+# Return the new array.
+
 =end
 
-def common_chars(array)
-  array = array.map { |word| word.dup }
+# def common_chars(array)
+#   array = array.map { |word| word.dup }
 
-  first_str = array.shift
-  first_str.chars.select do |char|
-    array.all? do |word|
-      word.sub!(char, '')
+#   first_str = array.shift
+#   first_str.chars.select do |char|
+#     array.all? do |word|
+#       word.sub!(char, '')
+#     end
+#   end
+# end
+
+
+def common_chars(words)
+  results = []
+  shortest_word = words.min_by { |word| word.length }
+
+  shortest_word.chars.each do |char|
+    if words.all? { |word| word.include?(char) }
+      results << char
+      words.each { |word| word.sub!(char, '') }
     end
   end
+  results
 end
 
 p common_chars(['bella', 'label', 'roller']) == ['e', 'l', 'l']
 p common_chars(['cool', 'lock', 'cook']) == ['c', 'o']
 p common_chars(['hello', 'goodbye', 'booya', 'random']) == ['o']
 p common_chars(%w(aabbaaaa ccdddddd eeffee ggrrrrr yyyzzz)) == []
+p common_chars(["car", "racecar", "rat"]) == ["a", "r"]
+p common_chars(["abc", "def", "hij"]) == []
