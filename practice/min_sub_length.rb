@@ -18,28 +18,23 @@
 
 def find_all_subarrays(array)
   subarrays = []
-
   0.upto(array.length - 1) do |idx1|
     idx1.upto(array.length - 1) do |idx2|
       subarrays << array[idx1..idx2]
     end
   end
-
   subarrays
 end
 
 def min_sub_length(array, s)
-  results = []
   subarrays = find_all_subarrays(array)
-
-  subarrays.each do |subarray|
-    results << subarray if subarray.sum >= s
+  results = subarrays.select do |subarray|
+    subarray.sum >= s
   end
-
   results.empty? ? 0 : results.min_by { |sub| sub.length }.length
 end
 
 p min_sub_length([2, 3, 1, 2, 4, 3], 7) == 2
-p min_sub_length([1, 10, 5, 2, 7], 9 ) == 1
+p min_sub_length([1, 10, 5, 2, 7], 9) == 1
 p min_sub_length([1, 11, 100, 1, 0, 200, 3, 2, 1, 250], 280) == 4
 p min_sub_length([1, 2, 4], 8) == 0
