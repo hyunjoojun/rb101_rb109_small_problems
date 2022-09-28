@@ -17,7 +17,9 @@ Algorithm:
 def fibonacci(nth)
   fibs = [1, 1]
 
-  (nth - 2).times { fibs << fibs.last(2).sum }
+  until fibs.length == nth
+    fibs << fibs.last(2).sum
+  end
   fibs.last
 end
 
