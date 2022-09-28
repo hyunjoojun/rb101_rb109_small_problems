@@ -3,24 +3,29 @@ Input: An array
 Output: A rotated array
 
 Rules:
-- The first element of the array moves to the end of the array.
-- Do not mutate the original array.
-- Do not use rotate method.
+- Move the first element of the input array to the end of the array.
+- Do not mutate the input array.
+- Do not use rotate methods.
 
 Algorithm:
-- Copy the original array..
-- Save the first element to a variable.
-- Delete the first element, and push the first element to the array.
-- Return the new array.
+- Create an empty array for the result.
+- Push the elements in order except the first element.
+- At the end, push the first element.
 =end
 
 def rotate_array(array)
-  new_arr = array.clone
-  first_element = new_arr.shift
-  new_arr << first_element
+  result = []
 
-  new_arr
+  array.each do |num|
+    next if num == array[0]
+
+    result << num
+  end
+
+  result << array[0]
+  result
 end
+
 
 def rotate_string(string)
   array = string.chars
