@@ -3,40 +3,46 @@ Input: An integer
 Output: An integer
 
 Rules:
-- Get a maximum rotation of the input number.
-- Ex: 735291
-- Rotate it to the left, 352917.
-- Keep the first digit fixed in place, rotate the remainders to get 329175.
-- Keep the first 2 digits fixed in place, rotate the remainders to get 321759.
-- Keep the first 3 digits fixed in place, rotate the remainders to get 321597.
-- Keep the first 4 digits fixed in place, rotate the remainders to get 321579.
-- Use the rotate_rightmost_digits method from previous exercise.
-- Do not have to handle multiple 0s.
+- 735291, rotate it to the left 352917. (Moving the first number to the end)
+- 352917, keep the 1st digit in place, rotate the remainings 329175.
+- 329175, keep the 1st 2 digits, rotate to get 321759.
+- 321759, keep the 1st 3 digits, rotate to get 321597.
+- 321597, keep the 1st 4 digits, rotate to get 321579.
+- Called the max rotation.
+- Do not handle multiple 0s.
+- Use rotate_rightmost_digits from the previous exercise.
 
 Algorithm:
-- rotate_rightmost_digits method uses 'digit' to choose a number
-  that gets pushed to the back.
-- Starting the first digit which is equal to number's length.
-- Decrease the digit by 1 and rotate it again.
-- Repeat until the digit gets down to 2.
-- Return max rotated number.
+- Split the number into digits array.
+- We are moving the number that starts from index 0 through index is
+the array's length - 2.
+- We are moving index 0, index 1, index 2, so on until index is equal to
+the array's length - 2.
+- Since the rotate_rightmost_digits method start from the back, we can change the
+index starting from -length until the index is -2.
 =end
+
+def rotate_rightmost_digits(num, n)
+  result = []
+
+  digits = num.digits.reverse
+  digits.each do |digit|
+    next if digit == digits[-n]
+
+    result << digit
+  end
+
+  result << digits[-n]
+  result.join.to_i
+end
 
 def max_rotation(number)
   length = number.digits.size
 
-  length.downto(2) do |digit|
-    number = rotate_rightmost_digits(number, digit)
+  length.downto(2) do |index|
+    number = rotate_rightmost_digits(number, index)
   end
   number
-end
-
-def rotate_rightmost_digits(num, digit)
-  chosen_num = num.to_s[-digit]
-  num_string = num.to_s.delete(chosen_num)
-
-  num_string << chosen_num
-  num_string.to_i
 end
 
 p max_rotation(735291) == 321579
