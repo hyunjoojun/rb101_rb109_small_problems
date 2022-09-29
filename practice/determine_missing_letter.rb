@@ -36,3 +36,7 @@ p determine_missing_letter(['o', 'q', 'r', 's']) == 'p'
 p determine_missing_letter(['g', 'h', 'i', 'k']) == 'j'
 p determine_missing_letter(['A', 'C', 'D']) == 'B'
 p determine_missing_letter(['S', 'T', 'U', 'W']) == 'V'
+p determine_missing_letter(["O", "Q", "R", "S"]) == "P"
+p determine_missing_letter(["b", "d"]) == "c"
+p determine_missing_letter(["a", "b", "d"]) == "c"
+p determine_missing_letter(["b", "d", "e"]) == "c"
