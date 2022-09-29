@@ -15,7 +15,7 @@ Algorithm:
 =end
 
 text = File.read('sample.txt')
-sentences = text.split(/\.|\?|!/)
+sentences = text.split(/[.!?]/)
 
 longest = sentences.max_by do |sentence|
   words = sentence.split(' ')
@@ -26,4 +26,3 @@ longest_length = longest.split(' ').length
 
 puts longest
 puts "Contains #{longest_length} words"
-z
