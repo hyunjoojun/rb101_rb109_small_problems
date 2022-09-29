@@ -18,12 +18,11 @@ LETTERS = [['B', 'O'], ['X', 'K'], ['D', 'Q'], ['C', 'P'], ['N', 'A'], ['G', 'T'
 ['R', 'E'], ['F', 'S'], ['J', 'W'], ['H', 'U'], ['V', 'I'], ['L', 'Y'], ['Z', 'M']]
 
 def block_word?(word)
-  LETTERS.each do |pair|
-    if word.upcase.include?(pair[0]) && word.include?(pair[1])
-      return false
-    end
+  new_word = word.upcase
+  both_used = LETTERS.select do |pair|
+    new_word.include?(pair[0]) && new_word.include?(pair[1])
   end
-  true
+  both_used.empty?
 end
 
 p block_word?('BATCH')
