@@ -21,9 +21,19 @@ def expanded_form(num)
     break if length == final_numbers.last.digits.length
   end
   num_arr = final_numbers.reverse
-  num_arr
+  arr_to_str(num_arr)
 end
 
-p expanded_form(12) #== '10 + 2'
-p expanded_form(42) #== '40 + 2'
-p expanded_form(70304) #== '70000 + 300 + 4'
+def arr_to_str(array)
+  string = ''
+
+  0.upto(array.length - 1) do |idx|
+    string << array[idx].to_s
+    string << ' + ' if idx < array.length - 1
+  end
+  string
+end
+
+p expanded_form(12) == '10 + 2'
+p expanded_form(42) == '40 + 2'
+p expanded_form(70304) == '70000 + 300 + 4'
