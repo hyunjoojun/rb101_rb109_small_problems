@@ -9,19 +9,18 @@ Rules:
 - The string will always contain at least one character.
 
 Algorithm:
-- Create a hash with all 3 keys.
-- The values of the hash starts with 0.0.
 - Split the string into characters.
-- Count how many characters are in the string, this equals to denominator.
-- number of lowercase / denominator = percentage
-- Add the percentage to the values.
+- Iterate through the array of characters and check if it's lowercase, uppercase,
+  or neither.
+- Set up a hash with appropriate keys and values set up to 0.
+- Add one to the correct value as we iterate through the characters.
+- Calculate the percentage.
 - Return the hash.
 =end
 
 def letter_percentages(string)
   percentage = { lowercase: 0.0, uppercase: 0.0, neither: 0.0 }
-
-  string.chars do |char|
+  string.chars.each do |char|
     if char =~ /[a-z]/
       percentage[:lowercase] += 1
     elsif char =~ /[A-Z]/
@@ -30,15 +29,16 @@ def letter_percentages(string)
       percentage[:neither] += 1
     end
   end
-  calculate(percentage)
+  convert_to_percentage(percentage)
 end
 
-def calculate(percentage)
-  divisor = percentage.values.sum
-  percentage.each do |key, value|
-    percentage[key] = ((value / divisor) * 100).round(1)
+def convert_to_percentage(hash)
+  denomiator = hash.values.sum
+
+  hash.each do |key, value|
+    hash[key] = ((value * 100) / denomiator).round(1)
   end
-  percentage
+  hash
 end
 
 p letter_percentages('abCdef 123') == { lowercase: 50.0, uppercase: 10.0, neither: 40.0 }
