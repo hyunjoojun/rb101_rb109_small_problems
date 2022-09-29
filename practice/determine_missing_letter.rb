@@ -1,5 +1,16 @@
-# Write a method that takes an array of consecutive letters as input and returns the
-# missing letter.
+# Find the missing letter
+# Write a method that takes an array of consecutive (increasing) letters as input and that returns the missing letter in the array.
+#
+# You will always get an valid array. And it will be always exactly one letter be missing. The length of the array will always be at least 2.
+#
+# The array will always contain letters in only one case.
+
+# Example:
+#
+# ['a','b','c','d','f'] -> 'e'
+# ['O','Q','R','S'] -> 'P'
+
+# Use the English alphabet with 26 letters.
 
 # Input: An array of letters
 # Output: A string (letter)
@@ -18,10 +29,10 @@
 # Return the first letter of the missing letters.
 # Upcase the letter if the original array had upcased letters.
 
-LETTERS = %w(a b c d e f g h i j k l m n o p q r s t u v w x y z)
+LETTERS = ('a'..'z').to_a
 
-def determine_missing_letter(array)
-  new_arr = array.map { |char| char.downcase }
+def find_missing_letter(array)
+  new_arr = array.map{ |char| char.downcase }
   starting_index = LETTERS.index(new_arr[0])
   missing_letters = ''
   0.upto(new_arr.length - 1) do |index|
@@ -31,12 +42,8 @@ def determine_missing_letter(array)
   LETTERS.include?(array[0]) ? missing_letters[0] : missing_letters[0].upcase
 end
 
-p determine_missing_letter(['a', 'b', 'c', 'd', 'f']) == 'e'
-p determine_missing_letter(['o', 'q', 'r', 's']) == 'p'
-p determine_missing_letter(['g', 'h', 'i', 'k']) == 'j'
-p determine_missing_letter(['A', 'C', 'D']) == 'B'
-p determine_missing_letter(['S', 'T', 'U', 'W']) == 'V'
-p determine_missing_letter(["O", "Q", "R", "S"]) == "P"
-p determine_missing_letter(["b", "d"]) == "c"
-p determine_missing_letter(["a", "b", "d"]) == "c"
-p determine_missing_letter(["b", "d", "e"]) == "c"
+p find_missing_letter(["a","b","c","d","f"]) == "e"
+p find_missing_letter(["O","Q","R","S"]) == "P"
+p find_missing_letter(["b","d"]) == "c"
+p find_missing_letter(["a","b","d"]) == "c"
+p find_missing_letter(["b","d","e"]) == "c"
