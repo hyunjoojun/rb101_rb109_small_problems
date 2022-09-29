@@ -1,25 +1,24 @@
-=begin
-Input: An integer
-Output: Difference between the sum (integer)
+# Write a method that computes the difference between the square of the sum of the first n
+# positive integers and the sum of the squares of the first n positive integers.
 
-Rules:
-- Get the difference between the square of the sum and sum of the squares.
-- The input number is an integer.
-- Get the sum of 1 through the input number and square it to get the sum square.
-- Get the square of 1 to input number and add them together to get the square sum.
-- Get the difference between the two.
+# Input: An Integer
+# Output: An integer(difference)
 
-Algorithm:
-- sum_sq = (1..num).sum**2
-- sq_sum = (1..num).map { |num| num**2 }.sum
-- sum_sq - sq_sum
-=end
+# Rules:
+# Starting from 1 to input number.
+# Sum up the numbers then square it to get the square of the sum.
+# Square each numbers then add all together to get the sum of the squares.
+# Get the difference between the two.
+
+# Ex: input number = 3
+# Add all the numbers from 1 to 3.
+# Square the sum.
+# Square each numbers, and add to get the sum.
 
 def sum_square_difference(num)
-  sum_sq = (1..num).sum**2
-  sq_sum = (1..num).map { |n| n**2 }.sum
-
-  sum_sq - sq_sum
+  sq_sum = (1..num).sum**2
+  sum_sq = (1..num).map { |n| n**2 }.sum
+  sq_sum - sum_sq
 end
 
 p sum_square_difference(3) == 22
