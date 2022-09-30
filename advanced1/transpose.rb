@@ -1,33 +1,32 @@
-=begin
-Input: A nested array
-Output: New nested array
+# Input: A nested Array
+# Output: Rotated nested array
 
-Rules:
-- Do not modify the original nested array.
-- Exchange the colmns and rows of the original matrix.
-- The method takes 3 x 3 matrix nested array.
+# Rules:
+# The matrix has rows which are the inner arrays.
+# The matrix has columns which are located at same index in each inner arrays.
+# Return inner arrays with colums not the rows.
 
-Algorithm:
-- Use zip method.
-=end
+# matrix = [
+#  [1, 5, 8],
+#  [4, 7, 2],
+#  [3, 9, 6]
+#]
+# Rows : [1, 5, 8]
+#        [4, 7, 2]
+#        [3, 9, 6]
+# From all of the rows, first element has to be grouped together to get the first inner array.
+# second elements grouped together to get the second inner array.
+# third elements grouped together to get the third inner array.
 
-def transpose(arrays)
-  arrays[0].zip(arrays[1], arrays[2])
+def transpose(matrix)
+  new_matrix = Array.new(matrix.size) { [] }
+  0.upto(matrix.size - 1) do |index|
+    matrix.each do |row|
+      new_matrix[index] << row[index]
+    end
+  end
+  new_matrix
 end
-
-# def transpose(arrays)
-#   arr1 = arrays[0]
-#   arr2 = arrays[1]
-#   arr3 = arrays[2]
-#   new_arr = [[], [], []]
-
-#   arr1.each_with_index do |num, idx|
-#     new_arr[idx] << num
-#     new_arr[idx] << arr2[idx]
-#     new_arr[idx] << arr3[idx]
-#   end
-#   new_arr
-# end
 
 matrix = [
   [1, 5, 8],
