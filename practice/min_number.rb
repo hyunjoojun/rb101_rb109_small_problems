@@ -40,19 +40,19 @@ def minimum_number(numbers)
   prime_num - sum
 end
 
-def next_prime_number(number)
-  (number..).each do |num|
-    return num if (2...number).all? { |divisor| num % divisor != 0 }
-  end
-end
-
 # def next_prime_number(number)
-#   loop do
-#     return number if (2...number).all? { |divisor| number % divisor != 0 }
-
-#     number += 1
+#   (number..).each do |num|
+#     return num if (2...number).all? { |divisor| num % divisor != 0 }
 #   end
 # end
+
+def next_prime_number(number)
+  loop do
+    return number if (2...number).all? { |divisor| number % divisor != 0 }
+
+    number += 1
+  end
+end
 
 p minimum_number([3, 1, 2]) == 1
 p minimum_number([5, 2]) == 0
