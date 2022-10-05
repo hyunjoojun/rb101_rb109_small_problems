@@ -34,9 +34,7 @@ def substrings(string)
   substrings = []
 
   1.upto(string.size / 2) do |sub_length|
-    if (string.size % sub_length == 0)
-      substrings << string[0, sub_length]
-    end
+    substrings << string[0, sub_length] if string.size % sub_length == 0
   end
   substrings
 end
@@ -44,11 +42,10 @@ end
 def repeated_substring_patten(string)
   substrings = substrings(string)
 
-  substrings.each do |sub|
-    multiplier = string.size / sub.size
-    return true if sub * multiplier == string
+  substrings.any? do |sub|
+    multiplier = string.length / sub.length
+    sub * multiplier == string
   end
-  false
 end
 
 p repeated_substring_patten('abab') == true
