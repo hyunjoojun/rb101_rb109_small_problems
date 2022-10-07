@@ -23,10 +23,10 @@
 # Return the string.
 # If the word does not contain letters, do not change anything.
 
-def pig_it text
-  text.split(" ").map do |word|
-    word =~ /[a-zA-Z]/ ? word[1..-1] + word[0] + "ay" : word
-  end.join(" ")
+def pig_it(text)
+  text.split(' ').map do |word|
+    word =~ /[a-zA-Z]/ ? word[1..-1] + word[0] + 'ay' : word
+  end.join(' ')
 end
 
 p pig_it('Pig latin is cool') == 'igPay atinlay siay oolcay'
