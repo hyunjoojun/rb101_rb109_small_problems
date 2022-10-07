@@ -23,8 +23,8 @@ Algorithm:
 
 def substrings(shortest_word)
   substrings = []
-  0.upto(shortest_word.length - 1) do |length|
-    substrings << shortest_word[0..length]
+  0.upto(shortest_word.length - 1) do |index|
+    substrings << shortest_word[0..index]
   end
   substrings
 end
@@ -32,12 +32,11 @@ end
 def common_prefix(array)
   shortest_word = array.min_by { |word| word.length }
   substrings = substrings(shortest_word)
-  common_pre = []
 
-  substrings.each do |substring|
-    common_pre << substring if array.all? { |word| word.start_with?(substring) }
+  common_prefix = substrings.select do |substring|
+    array.all? { |word| word.start_with?(substring) }
   end
-  common_pre.empty? ? '' : common_pre.last
+  common_prefix.empty? ? '' : common_prefix.last
 end
 
 p common_prefix(%w(flower flow flight)) == 'fl'
