@@ -51,3 +51,18 @@ p max_sequence([]) == 0
 p max_sequence([11]) == 11
 p max_sequence([-32]) == 0
 p max_sequence([-2, 1, -7, 4, -10, 2, 1, 5, 4]) == 12
+
+# def max_sequence(arr)
+#   return 0 if arr.all? { |num| num.negative? }
+
+#   max_sum = arr[0]
+#   current_sum = 0
+#   arr.each_with_index do |num, index|
+#     if current_sum < 0
+#       current_sum = 0
+#     end
+#     current_sum += num
+#     max_sum = current_sum if max_sum < current_sum
+#   end
+#   max_sum
+# end
