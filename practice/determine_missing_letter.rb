@@ -29,17 +29,22 @@
 # Return the first letter of the missing letters.
 # Upcase the letter if the original array had upcased letters.
 
-LETTERS = ('a'..'z').to_a
+# LETTERS = ('a'..'z').to_a
 
-def find_missing_letter(array)
-  new_arr = array.map{ |char| char.downcase }
-  starting_index = LETTERS.index(new_arr[0])
-  missing_letters = ''
-  0.upto(new_arr.length - 1) do |index|
-    missing_letters << LETTERS[starting_index] if LETTERS[starting_index] != new_arr[index]
-    starting_index += 1
-  end
-  LETTERS.include?(array[0]) ? missing_letters[0] : missing_letters[0].upcase
+# def find_missing_letter(array)
+#   new_arr = array.map{ |char| char.downcase }
+#   starting_index = LETTERS.index(new_arr[0])
+#   missing_letters = ''
+#   0.upto(new_arr.length - 1) do |index|
+#     missing_letters << LETTERS[starting_index] if LETTERS[starting_index] != new_arr[index]
+#     starting_index += 1
+#   end
+#   LETTERS.include?(array[0]) ? missing_letters[0] : missing_letters[0].upcase
+# end
+
+def find_missing_letter(arr)
+  range = (arr[0]..arr[-1]).to_a
+  (range - arr)[0]
 end
 
 p find_missing_letter(["a","b","c","d","f"]) == "e"
