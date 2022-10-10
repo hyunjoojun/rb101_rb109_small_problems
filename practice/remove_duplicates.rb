@@ -19,7 +19,7 @@ def remove_duplicates(letters)
       next if idx == 0
       if char == characters[idx - 1]
         letters.sub!(char, '')
-        letters.sub!(characters[idx-1], '')
+        letters.sub!(characters[idx - 1], '')
       end
     end
   end
