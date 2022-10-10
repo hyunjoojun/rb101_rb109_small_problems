@@ -4,37 +4,26 @@
 # Return the final string after all such duplicate removals have been made. It can be
 # proven that the answer is unique.
 
-def duplicates?(string)
-  boolean = string.chars.map.with_index do |char, idx|
+def duplicates?(characters)
+  characters.each.with_index do |char, idx|
     next if idx == 0
-    char == string[idx - 1]
+    return true if char == characters[idx - 1]
   end
-  boolean.any? { |ele| ele == true }
+  false
 end
 
-def delete_letters(string)
-  chars = string.split('')
-  prev_char = chars.last
-
-  (chars.length - 2).downto(0) do |n|
-    char = chars[n]
-
-    if char == prev_char
-      chars.delete_at(n + 1)
-      chars.delete_at(n)
+def remove_duplicates(letters)
+  while duplicates?(letters.chars)
+    characters = letters.chars
+    characters.each.with_index do |char, idx|
+      next if idx == 0
+      if char == characters[idx - 1]
+        letters.sub!(char, '')
+        letters.sub!(characters[idx-1], '')
+      end
     end
-
-    prev_char = char
   end
-
-  chars.join('')
-end
-
-def remove_duplicates(string)
-  while duplicates?(string)
-    string = delete_letters(string)
-  end
-  string
+  letters
 end
 
 p remove_duplicates("aaybbyz") == "z"
