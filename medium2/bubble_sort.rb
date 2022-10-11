@@ -23,13 +23,14 @@ Algorithm:
 def bubble_sort!(arr)
   loop do
     swapped = false
-    (arr.length - 1).times do |idx|
-      next if arr[idx] <= arr[idx + 1]
-
-      arr[idx], arr[idx + 1] = arr[idx + 1], arr[idx]
-      swapped = true
+    arr.each_with_index do |num, idx|
+      next if idx == 0
+      if arr[idx - 1] > num
+        arr[idx - 1], arr[idx] = arr[idx], arr[idx - 1]
+        swapped = true
+      end
     end
-    break if swapped == false
+    break unless swapped
   end
   arr
 end
