@@ -1,37 +1,31 @@
-=begin
-Write a function scramble(str1, str2) that returns true if a portion of
-str1 characters can be rearranged to match str2, otherwise return false.
+# Write a function scramble(str1, str2) that returns true if a portion of
+# str1 characters can be rearranged to match str2, otherwise return false.
+# For example:
+# str1 is 'rkqodlw' and str2 is 'world' the output should return true.
+# str1 is 'cedewaraaossoqqyt' and str2 is 'codewars' should return true.
+# str1 is 'katas' and str2 is 'steak' should return false.
+# Only lower case letters will be used (a-z). No punctuation or digits will be included.
 
-For example:
-str1 is 'rkqodlw' and str2 is 'world' the output should return true.
-str1 is 'cedewaraaossoqqyt' and str2 is 'codewars' should return true.
-str1 is 'katas' and str2 is 'steak' should return false.
+# Input: Two strings.
+# Output: true or false.
 
-Only lower case letters will be used (a-z). No punctuation or digits will be included.
+# Rules:
+# Make string2 by rearranging string1 characters.
+# If there is no character in string1 to make string2, return false.
+# Return true if string2 can be made with string1 characters.
+# Input strings will have only lowercase letters.
 
-Input: Two strings
-Output: true or false
-
-Rules:
-- There are two strings.
-- Return true if the second string can be made with the first string letters.
-- The order of letters does not matter.
-- Only lower case letters are used.
-- The number of letters should match or the first string must have more.
-
-Algorithm:
-- Split the second string into characters.
-- Iterate through each charcters and substitute with blank space.
-- If there is no character that we need, it will have nil elements in the new array.
-- If the new array includes nil, return false, otherwise true.
-=end
+# Take the string2 split it into characters.
+# Iterate through the characters, delete the character from string1.
+# If that is nil, return false.
+# otherwise return true.
 
 def scramble(str1, str2)
-  transformed = str2.chars.map do |char|
-    str1.sub!(char, ' ')
+  characters = str2.chars
+  characters.each do |char|
+    return false if str1.sub!(char, '') == nil
   end
-
-  !transformed.include?(nil)
+  true
 end
 
 p scramble('javaass', 'jjss') == false
