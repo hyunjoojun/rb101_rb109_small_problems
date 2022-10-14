@@ -8,20 +8,19 @@
 # [1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time (which is odd).
 
 # Input: An array of numbers
-# Output: An Integer
+# Output: An element(an integer)
 
 # Rules:
-# Return the number in the given array if it appears odd number of times.
-# Always only one integer that appears an odd number of times.
+# Find an element that appears an odd number of times.
+# There will be only one element that appears an odd number of times.
+# All the other elements should occur even number of times.
 
-# Create an array that has unique numbers only.
-# Iterate through the unique numbers array to count how many times it appears in the input array.
-# If the count is an odd number, return the number.
+# Iterate through each element, count how many of the same element there are in the array.
+# If the count is odd, return the element.
 
-def find_it(seq)
-  unique_numbers = seq.uniq
-  unique_numbers.each do |num|
-    return num if seq.count(num).odd?
+def find_it(array)
+  array.each do |ele|
+    return ele if array.count(ele).odd?
   end
 end
 
