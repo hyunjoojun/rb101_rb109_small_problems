@@ -39,17 +39,11 @@
 # Return index when they are equal.
 # If they are not equal return -1.
 
-def find_even_index(arr)
-  0.upto(arr.length - 1) do |idx|
-    if idx == 0
-      right_side = arr[1..-1]
-      left_side = 0
-      return 0 if right_side.sum == left_side
-    else
-      right_side = arr[idx+1..-1]
-      left_side = arr[0...idx]
-      return idx if right_side.sum == left_side.sum
-    end
+def find_even_index(array)
+  0.upto(array.length - 1) do |index|
+    left_sum = array[0...index].sum
+    right_sum = array[(index + 1)..-1].sum
+    return index if left_sum == right_sum
   end
   -1
 end
